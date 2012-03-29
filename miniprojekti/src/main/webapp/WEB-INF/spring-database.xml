@@ -43,7 +43,7 @@
     <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
     <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
     
-    <beans profile="dev,default">
+    <beans profile="dev">
         <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
             <property name="properties" value="persistenceUnitName=persistenceUnitDev"/>
         </bean>
@@ -51,16 +51,16 @@
     </beans>
     
     <!--tähän konffataan oikea tietokanta-->
-    <beans profile="production">
+    <beans profile="production,default">
         <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
             <property name="properties" value="persistenceUnitName=persistenceUnitProduction"/>
         </bean>
         
         <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
             <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-            <property name="url" value="jdbc:mysql://localhost:3306/awesome"/>
-            <property name="username" value="root"/>
-            <property name="password" value=""/>
+            <property name="url" value="jdbc:mysql://localhost:3306/test"/>
+            <property name="username" value="remoteuser"/>
+            <property name="password" value="lollmao12345"/>
         </bean>
     </beans>
     
