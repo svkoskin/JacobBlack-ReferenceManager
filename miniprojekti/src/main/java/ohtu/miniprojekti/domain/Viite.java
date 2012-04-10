@@ -15,7 +15,7 @@ public class Viite implements Serializable {
 
     @NotNull(message="Viitteellä täytyy olla otsikko.")
     @Size(min=1, max=200, message="Otsikon pituus saa olla 1-200 merkkiä.")
-    @Pattern(regexp="[\\w äöÄÖ]+", message="Virheellinen nimi.")
+    @Pattern(regexp="[\\w äöÄÖ]*", message="Virheellinen nimi.")
     private String title;
     
     @NotNull(message="Teoksen tekijät täytyy ilmoittaa.")
@@ -43,7 +43,11 @@ public class Viite implements Serializable {
     // BibTeX "key"
     private String referenceKey;
     
+    private String number;
+    
     private String pages;
+    
+    private String series;
     
     private String address;
     
@@ -105,6 +109,14 @@ public class Viite implements Serializable {
         this.note = note;
     }
 
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }   
+    
     public String getPages() {
         return pages;
     }
@@ -143,6 +155,14 @@ public class Viite implements Serializable {
 
     public void setReferenceKey(String referenceKey) {
         this.referenceKey = referenceKey;
+    }
+
+    public String getSeries() {
+        return series;
+    }
+
+    public void setSeries(String series) {
+        this.series = series;
     }
 
     public String getVolume() {
