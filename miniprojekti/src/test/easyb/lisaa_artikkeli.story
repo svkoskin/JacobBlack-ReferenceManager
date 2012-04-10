@@ -30,7 +30,7 @@ scenario "Käyttäjä tallettaa viitteen, josta puuttuu yksi pakollinen tieto", 
     given "Viitteenlisäyslomake on avattu", {
         driver = new HtmlUnitDriver()
         driver.get("http://localhost:8084/miniprojekti")
-        elem = driver.findElement(By.linkText("Lisaa artikkeli"))
+        elem = driver.findElement(By.linkText("Lisää artikkeli"))
         elem.click()
     }
     when "Jokin pakollinen kenttä on tyhjä", {
