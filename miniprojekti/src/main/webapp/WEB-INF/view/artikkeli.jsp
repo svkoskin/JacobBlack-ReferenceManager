@@ -58,7 +58,7 @@
             <label>Painos:</label>
             <form:input path="edition" /> <form:errors path="edition" />
 
-            <input type="submit" value="Tallenna viite" />
+            <input name="tallenna" type="submit" value="Tallenna viite" />
         </form:form>   
 
     </body>

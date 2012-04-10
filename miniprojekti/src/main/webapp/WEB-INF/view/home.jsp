@@ -12,7 +12,7 @@
         
         <h2>Lisää uusi viite:</h2>
         <ul>
-            <li><a href="artikkeli">Artikkeli</a></li>
+            <li><a href="artikkeli">Lisaa artikkeli</a></li>
         </ul>
         
         <br/>

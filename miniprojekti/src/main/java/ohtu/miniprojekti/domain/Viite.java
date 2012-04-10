@@ -9,28 +9,29 @@ import javax.validation.constraints.*;
 
 @Entity
 public class Viite implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
-
-    @NotNull(message="Viitteellä täytyy olla otsikko.")
-    @Size(min=1, max=200, message="Otsikon pituus saa olla 1-200 merkkiä.")
-    @Pattern(regexp="[\\w äöÄÖ]*", message="Virheellinen nimi.")
+   
+    @NotNull(message = "Viitteellä täytyy olla otsikko.")
+    @Size(min = 1, max = 200, message = "Otsikon pituus saa olla 1-200 merkkiä.")
+    @Pattern(regexp = "[\\w äöÄÖ]*", message = "Virheellinen nimi.")
     private String title;
     
-    @NotNull(message="Teoksen tekijät täytyy ilmoittaa.")
-    @Size(min=1, max=50, message="Tekijöiden nimien pituus saa olla 1-50 merkkiä.")
+    @Size(min = 1, max = 50, message = "Tekijöiden nimien pituus saa olla 1-50 merkkiä.")
     private String author;
-    
+  
     // BibTeX "year"
-    @NotNull(message="Julkaisuvuosi täytyy ilmoittaa.")
+    @NotNull(message = "Julkaisuvuosi täytyy ilmoittaa.")
     @Min(1500)
     @Max(2050)
     private Integer publicationYear;
     
-    @NotNull(message="Julkaisija täytyy ilmoittaa.")
+    @NotNull(message = "Julkaisija täytyy ilmoittaa.")
     private String publisher;
     
+    @NotNull(message = "Julkaisu täytyy ilmoittaa.")
     private String journal;
     
     private String volume;
@@ -115,8 +116,8 @@ public class Viite implements Serializable {
 
     public void setNumber(String number) {
         this.number = number;
-    }   
-    
+    }
+
     public String getPages() {
         return pages;
     }
@@ -172,6 +173,4 @@ public class Viite implements Serializable {
     public void setVolume(String volume) {
         this.volume = volume;
     }
-    
-    
 }
