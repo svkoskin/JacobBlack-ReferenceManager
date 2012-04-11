@@ -13,6 +13,7 @@
         <h2>Lisää uusi viite:</h2>
         <ul>
             <li><a href="artikkeli">Lisää artikkeli</a></li>
+            <li><a href="kirja">Lisää kirja</a></li>
         </ul>
         
         <h2>Tallennetut viitteet:</h2>

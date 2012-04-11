@@ -3,6 +3,7 @@ package ohtu.miniprojekti.controller;
 import javax.validation.Valid;
 import ohtu.miniprojekti.domain.Viite;
 import ohtu.miniprojekti.formvalidation.ArticleValidationObject;
+import ohtu.miniprojekti.formvalidation.BookValidationObject;
 import ohtu.miniprojekti.service.ViiteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,7 +37,7 @@ public class MainController {
     }
     
     @RequestMapping(value = "artikkeli", method = RequestMethod.POST)
-    public String postViite(@Valid @ModelAttribute("viite") ArticleValidationObject viiteValidationObj, BindingResult bindingResult) {
+    public String postArtikkeli(@Valid @ModelAttribute("viite") ArticleValidationObject viiteValidationObj, BindingResult bindingResult) {
         if(bindingResult.hasErrors()) return "artikkeli";
         
         Viite viite = new Viite(viiteValidationObj);
@@ -44,7 +45,23 @@ public class MainController {
         
         return "redirect:home";
     }
+
+    @RequestMapping(value = "kirja", method = RequestMethod.GET)
+    public String getKirja(Model model) {
+        model.addAttribute("viite", new BookValidationObject());
+        return "kirja";
+    }
     
+    @RequestMapping(value = "kirja", method = RequestMethod.POST)
+    public String postKirja(@Valid @ModelAttribute("viite") BookValidationObject viiteValidationObj, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()) return "kirja";
+        
+        Viite viite = new Viite(viiteValidationObj);
+        viite = viiteService.save(viite);
+        
+        return "redirect:home";
+    }
+
     @RequestMapping(value = "listaus", method = RequestMethod.GET)
     public String getListaaKaikki(Model model) {
         model.addAttribute("viitteet", viiteService.findAll());

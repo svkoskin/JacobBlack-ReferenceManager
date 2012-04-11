@@ -15,8 +15,8 @@
         <br/>
         
         <c:forEach var="viite" items="${viitteet}">
-            <c:if test="${ not empty viite.title}"><label>Nimi:</label> ${viite.title} <br/></c:if>
             <c:if test="${ not empty viite.author}"><label>Tekijät:</label> ${viite.author} <br/></c:if>
+            <c:if test="${ not empty viite.title}"><label>Nimi:</label> ${viite.title} <br/></c:if>
             <c:if test="${ not empty viite.publicationYear}"><label>Julkaisuvuosi:</label> ${viite.publicationYear} <br/></c:if>
             <c:if test="${ not empty viite.publisher}"><label>Julkaisija:</label> ${viite.publisher} <br/></c:if>
             <c:if test="${ not empty viite.journal}"><label>Julkaisu:</label> ${viite.journal} <br/></c:if>

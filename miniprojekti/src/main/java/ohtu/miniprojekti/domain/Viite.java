@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import ohtu.miniprojekti.formvalidation.ArticleValidationObject;
+import ohtu.miniprojekti.formvalidation.BookValidationObject;
 
 @Entity
 public class Viite implements Serializable {
@@ -43,6 +44,20 @@ public class Viite implements Serializable {
         this.pages = validationObject.getPages();
     }
 
+    public Viite(BookValidationObject validationObject) {
+        this.viiteType = ViiteType.BOOK;
+        this.author = validationObject.getAuthor();
+        this.title = validationObject.getTitle();
+        this.publisher = validationObject.getPublisher();
+        this.publicationYear = validationObject.getPublicationYear();
+        this.volume = validationObject.getVolume();
+        this.series = validationObject.getSeries();
+        this.edition = validationObject.getEdition();
+        this.pages = validationObject.getPages();
+    }
+
+    
+    
     public String getAuthor() {
         return author;
     }
