@@ -2,6 +2,7 @@ package ohtu.miniprojekti.controller;
 
 import javax.validation.Valid;
 import ohtu.miniprojekti.domain.Viite;
+import ohtu.miniprojekti.formvalidation.ArticleValidationObject;
 import ohtu.miniprojekti.service.ViiteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,15 +31,16 @@ public class MainController {
     
     @RequestMapping(value = "artikkeli", method = RequestMethod.GET)
     public String getArtikkeli(Model model) {
-        model.addAttribute("viite", new Viite());
+        model.addAttribute("viite", new ArticleValidationObject());
         return "artikkeli";
     }
     
     @RequestMapping(value = "artikkeli", method = RequestMethod.POST)
-    public String postViite(@Valid @ModelAttribute("viite") Viite viite, BindingResult bindingResult) {
+    public String postViite(@Valid @ModelAttribute("viite") ArticleValidationObject viiteValidationObj, BindingResult bindingResult) {
         if(bindingResult.hasErrors()) return "artikkeli";
         
-        viiteService.save(viite);
+        Viite viite = new Viite(viiteValidationObj);
+        viite = viiteService.save(viite);
         
         return "redirect:home";
     }

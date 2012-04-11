@@ -50,7 +50,6 @@
         <jdbc:embedded-database id="dataSource" type="HSQL"/> 
     </beans>
     
-    <!--tähän konffataan oikea tietokanta-->
     <beans profile="production">
         <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
             <property name="properties" value="persistenceUnitName=persistenceUnitProduction"/>

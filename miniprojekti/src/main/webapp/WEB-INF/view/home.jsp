@@ -7,12 +7,12 @@
         <title>Miniprojekti</title>
     </head>
     <body>
-        <h1>Luukkaisen viitteet</h1>
+        <h1>Vihavaisen viitteet</h1>
         <br/>
         
         <h2>Lisää uusi viite:</h2>
         <ul>
-            <li><a href="artikkeli">Lisaa artikkeli</a></li>
+            <li><a href="artikkeli">Lisää artikkeli</a></li>
         </ul>
         
         <h2>Tallennetut viitteet:</h2>

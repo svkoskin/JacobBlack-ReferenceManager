@@ -10,56 +10,22 @@
             input { float:left; position:relative; }
             span { float:left; position:relative; }
         </style>
+
     </head>
     <body>
-        <h1>Uusi viite</h1>
+        <h1>Uusi viite (artikkeli):</h1>
         <form:form commandName="viite" action="artikkeli" method="POST">
-            <label>Nimi:</label>
-            <form:input path="title" /> <form:errors path="title" />
-
-            <label>Tekijät:</label>
-            <form:input path="author" /> <form:errors path="author" />
-
-            <label>Julkaisuvuosi:</label>
-            <form:input path="publicationYear" /> <form:errors path="publicationYear" />
-
-            <label>Julkaisija:</label>
-            <form:input path="publisher" /> <form:errors path="publisher" />
-
-            <label>Julkaisu:</label>
-            <form:input path="journal" /> <form:errors path="journal" />
-
-            <label>Valinnaiset tiedot</label>
-
-            <label>Numero (volume):</label>
-            <form:input path="volume" /> <form:errors path="volume" />
-
-            <label>Kuukausi:</label>
-            <form:input path="publicationMonth" /> <form:errors path="publicationMonth" />
-
-            <label>Lisätiedot:</label>
-            <form:input path="note" /> <form:errors path="note" />
-
-            <label>Järjestys:</label>
-            <form:input path="referenceKey" /> <form:errors path="referenceKey" />
-
-            <label>Numero (number):</label>
-            <form:input path="number" /> <form:errors path="number" />
-
-            <label>Sivut:</label>
-            <form:input path="pages" /> <form:errors path="pages" />
-
-            <label>Julkaisusarja:</label>
-            <form:input path="series" /> <form:errors path="series" />
-
-            <label>Julkaisijan osoite tai paikkakunta:</label>
-            <form:input path="address" /> <form:errors path="address" />
-
-            <label>Painos:</label>
-            <form:input path="edition" /> <form:errors path="edition" />
-
-            <input name="tallenna" type="submit" value="Tallenna viite" />
+            <label>*Tekijät: </label><form:input path="author" /> <form:errors path="author" /><br/>
+            <label>*Otsikko: </label><form:input path="title" /> <form:errors path="title" /><br/>
+            <label>*Journal: </label><form:input path="journal" /> <form:errors path="journal" /><br/>
+            <label>*Vuosi: </label><form:input path="publicationYear" /> <form:errors path="publicationYear" /><br/>
+            <label>Vuosikerta: </label><form:input path="volume" /> <form:errors path="volume" /><br/>
+            <label>Numero: </label><form:input path="number" /> <form:errors path="number" /><br/>
+            <label>Sivut: </label><form:input path="pages" /> <form:errors path="pages" /><br/>
+            <input type="submit" value="Lähetä" />
         </form:form>   
-
+        <br/>
+        <h4>(*) pakollinen kenttä</h4>
+        
     </body>
 </html>

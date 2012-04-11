@@ -7,7 +7,7 @@ scenario "Käyttäjä tallettaa viitteen, jossa on kaikki pakolliset viitteet", 
     given "Viitteenlisäyslomake on avattu", {
         driver = new HtmlUnitDriver()
         driver.get("http://localhost:8084/miniprojekti")
-        elem = driver.findElement(By.linkText("Lisaa artikkeli"))
+        elem = driver.findElement(By.linkText("Lisää artikkeli"))
         elem.click()
     }
     when "Kaikki viitteen pakolliset tiedot annetaan", {

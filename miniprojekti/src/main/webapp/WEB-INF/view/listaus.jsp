@@ -21,7 +21,6 @@
             <c:if test="${ not empty viite.publisher}"><label>Julkaisija:</label> ${viite.publisher} <br/></c:if>
             <c:if test="${ not empty viite.journal}"><label>Julkaisu:</label> ${viite.journal} <br/></c:if>
             <c:if test="${ not empty viite.volume}"><label>Numero (volume):</label> ${viite.volume} <br/></c:if>
-            <c:if test="${ not empty viite.publicationMonth}"><label>Kuukausi:</label> ${viite.publicationMonth} <br/></c:if>
             <c:if test="${ not empty viite.number}"><label>Numero (number):</label> ${viite.number} <br/></c:if>
             <c:if test="${ not empty viite.pages}"><label>Sivut:</label> ${viite.pages} <br/></c:if>
             <c:if test="${ not empty viite.series}"><label>Julkaisusarja:</label> ${viite.series} <br/></c:if>
