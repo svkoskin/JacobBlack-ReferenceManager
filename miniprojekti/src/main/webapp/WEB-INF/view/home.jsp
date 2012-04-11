@@ -15,6 +15,11 @@
             <li><a href="artikkeli">Lisaa artikkeli</a></li>
         </ul>
         
+        <h2>Tallennetut viitteet:</h2>
+        <ul>
+            <li><a href="listaus">Näytä kaikki</a></li>
+        </ul>
+        
         <br/>
         <h2>Viitteitä tietokannassa: ${viitecount}</h2>
     </body>

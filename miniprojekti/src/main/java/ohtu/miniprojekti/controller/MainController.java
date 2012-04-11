@@ -43,6 +43,10 @@ public class MainController {
         return "redirect:home";
     }
     
-    
+    @RequestMapping(value = "listaus", method = RequestMethod.GET)
+    public String getListaaKaikki(Model model) {
+        model.addAttribute("viitteet", viiteService.findAll());
+        return "listaus";
+    }
     
 }
