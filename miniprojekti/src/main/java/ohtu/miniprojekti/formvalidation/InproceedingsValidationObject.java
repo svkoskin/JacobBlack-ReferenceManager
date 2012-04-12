@@ -2,7 +2,7 @@ package ohtu.miniprojekti.formvalidation;
 
 import javax.validation.constraints.*;
 
-public class BookValidationObject {
+public class InproceedingsValidationObject {
     
     @NotNull(message="Viitteellä täytyy olla vähintään yksi tekijä.")
     @Size(min=1, max=50, message="Tekijän pituus 1-50 merkkiä.")
@@ -14,33 +14,41 @@ public class BookValidationObject {
     @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\!\\']+", message="Virheellinen nimi.")
     private String title;
     
-    @NotNull(message="Viitteellä täytyy olla julkaisija.")
-    @Size(min=1, max=50, message="Julkaisijan pituus 1-50 merkkiä.")
+    @NotNull(message="Inproceedings entry must contain booktitle")
+    @Size(min=1, max=50, message="Nimen pituus 1-50 merkkiä.")
     @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\!\\']+", message="Virheellinen nimi.")
-    private String publisher;
+    private String booktitle;
     
     @NotNull(message="Anna julkaisun vuosi.")
     @Digits(integer=4, fraction=0, message="Virheellinen vuosiluku.")
     private String publicationYear;
     
-    @Pattern(regexp="([1-9][0-9]*)?", message="Virheellinen numero.")
-    private String volume;
-    
-    @Size(min=0, max=50, message="Julkaisusarjan pituus korkeintaan 50 merkkiä.")
-    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\!\\']+", message="Virheellinen nimi.")
-    private String series;
-    
-    @Size(min=0, max=20, message="Painos korkeintaan 20 merkkiä.")
+    @Size(min=0, max=50, message="Editor name must be at most 50 characters.")
     @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\']+", message="Virheellinen nimi.")
-    private String edition;
+    private String editor;
     
     @Pattern(regexp="([1-9][0-9]*(\\-[1-9][0-9]*)?)?", message="Anna muodossa xxx-yyy.")
     private String pages;
 
+    @Size(min=0, max=50, message="Organization name must be at most 50 characters.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\']+", message="Virheellinen nimi.")
+    private String organization;
+    
+    @Size(min=0, max=50, message="Julkaisijan pituus korkeintaan 50 merkkiä.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\!\\']+", message="Virheellinen nimi.")
+    private String publisher;
+    
     @Size(min=0, max=50, message="Osoitteen pituus korkeintaan 50 merkkiä.")
     @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\!\\']+", message="Virheellinen nimi.")
     private String address;
-    
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
     public String getAuthor() {
         return author;
@@ -50,12 +58,28 @@ public class BookValidationObject {
         this.author = author;
     }
 
-    public String getEdition() {
-        return edition;
+    public String getBooktitle() {
+        return booktitle;
     }
 
-    public void setEdition(String edition) {
-        this.edition = edition;
+    public void setBooktitle(String booktitle) {
+        this.booktitle = booktitle;
+    }
+
+    public String getEditor() {
+        return editor;
+    }
+
+    public void setEditor(String editor) {
+        this.editor = editor;
+    }
+
+    public String getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(String organization) {
+        this.organization = organization;
     }
 
     public String getPages() {
@@ -82,14 +106,6 @@ public class BookValidationObject {
         this.publisher = publisher;
     }
 
-    public String getSeries() {
-        return series;
-    }
-
-    public void setSeries(String series) {
-        this.series = series;
-    }
-
     public String getTitle() {
         return title;
     }
@@ -97,24 +113,6 @@ public class BookValidationObject {
     public void setTitle(String title) {
         this.title = title;
     }
-
-    public String getVolume() {
-        return volume;
-    }
-
-    public void setVolume(String volume) {
-        this.volume = volume;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     
-    
-    
+
 }

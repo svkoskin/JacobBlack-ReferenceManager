@@ -13,20 +13,21 @@
 
     </head>
     <body>
-        <h1>Uusi viite (Kirja):</h1>
+        <h1>New entry (Book):</h1>
         <form:form commandName="viite" action="kirja" method="POST">
-            <label>*Tekijät: </label><form:input path="author" /> <form:errors path="author" /><br/>
-            <label>*Nimi: </label><form:input path="title" /> <form:errors path="title" /><br/>
-            <label>*Julkaisija: </label><form:input path="publisher" /> <form:errors path="publisher" /><br/>
-            <label>*Vuosi: </label><form:input path="publicationYear" /> <form:errors path="publicationYear" /><br/>
-            <label>Vuosikerta: </label><form:input path="volume" /> <form:errors path="volume" /><br/>
-            <label>Julkaisusarja: </label><form:input path="series" /> <form:errors path="series" /><br/>
-            <label>Painos: </label><form:input path="edition" /> <form:errors path="edition" /><br/>
-            <label>Sivut: </label><form:input path="pages" /> <form:errors path="pages" /><br/>
-            <span><input type="submit" value="Lähetä" /></span>
+            <label>*Author: </label><form:input path="author" /> <form:errors path="author" /><br/>
+            <label>*Title: </label><form:input path="title" /> <form:errors path="title" /><br/>
+            <label>*Publisher: </label><form:input path="publisher" /> <form:errors path="publisher" /><br/>
+            <label>*Year: </label><form:input path="publicationYear" /> <form:errors path="publicationYear" /><br/>
+            <label>Address: </label><form:input path="address" /> <form:errors path="address" /><br/>
+            <label>Volume: </label><form:input path="volume" /> <form:errors path="volume" /><br/>
+            <label>Series: </label><form:input path="series" /> <form:errors path="series" /><br/>
+            <label>Edition: </label><form:input path="edition" /> <form:errors path="edition" /><br/>
+            <label>Pages: </label><form:input path="pages" /> <form:errors path="pages" /><br/>
+            <span><input type="submit" value="Send" /></span>
         </form:form>   
         <br/>
-        <span><h4>(*) pakollinen kenttä</h4></span>
+        <span><h4>(*) required field</h4></span>
         
     </body>
 </html>

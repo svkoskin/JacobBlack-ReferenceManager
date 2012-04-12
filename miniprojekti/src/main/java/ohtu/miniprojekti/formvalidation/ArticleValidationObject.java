@@ -6,17 +6,17 @@ public class ArticleValidationObject {
     
     @NotNull(message="Viitteellä täytyy olla vähintään yksi tekijä.")
     @Size(min=1, max=50, message="Tekijän pituus 1-50 merkkiä.")
-    @Pattern(regexp="[\\w äöåÄÖÅ\\,]+", message="Virheellinen nimi. Anna muodossa \"sukunimi1, etunimi1 and sukunimi2, etunimi2\"")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\']+", message="Virheellinen nimi. Anna muodossa \"sukunimi1, etunimi1 and sukunimi2, etunimi2\"")
     private String author;
     
     @NotNull(message="Viitteellä täytyy olla nimi.")
     @Size(min=1, max=50, message="Nimen pituus 1-50 merkkiä.")
-    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\!]+", message="Virheellinen nimi.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\!\\']+", message="Virheellinen nimi.")
     private String title;
 
     @NotNull(message="Artikkelilla täytyy olla julkaisupaikka.")
     @Size(min=1, max=50, message="Julkaisun pituus 1-50 merkkiä.")
-    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\!]+", message="Virheellinen nimi.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\!\\']+", message="Virheellinen nimi.")
     private String journal;
     
     @NotNull(message="Anna julkaisun vuosi.")
