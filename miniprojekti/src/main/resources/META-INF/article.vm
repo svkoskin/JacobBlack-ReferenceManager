@@ -1,0 +1,24 @@
+@ARTICLE{ $tag,
+AUTHOR    = {$author}, 
+TITLE     = {$title},
+JOURNAL   = {$journal},
+YEAR      = {$year},
+#if ($volume)
+Volume    = {$volume},
+#end
+#if ($number)
+Number    = {$number},
+#end
+#if ($pages)
+Pages     = {$pages},
+#end
+#if ($month)
+Month     = {$month},
+#end
+#if ($note)
+Note      = {$note},
+#end
+#if ($key)
+Key       = {$key}
+#end
+}

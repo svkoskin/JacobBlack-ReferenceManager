@@ -35,7 +35,7 @@
             <artifactId>spring-context</artifactId>
             <version>${spring-version}</version>
             <exclusions>
-        <!-- k�ytet��n simple logging facadea commons logging-kirjaston sijaan -->
+        <!-- käytetään simple logging facadea commons logging-kirjaston sijaan -->
                 <exclusion>
                     <groupId>commons-logging</groupId>
                     <artifactId>commons-logging</artifactId>
@@ -176,6 +176,14 @@
             <version>8.4-702.jdbc3</version>
             <classifier/>
         </dependency>
+        
+        <!--Template engine (Note: newer versions will break builds. Use 1.4) -->
+        <dependency>
+            <groupId>velocity</groupId>
+            <artifactId>velocity</artifactId>
+            <version>1.4</version>
+        </dependency>
+            
             
         <!-- loggauskirjastot -->
         <dependency>

@@ -1,0 +1,30 @@
+@INPROCEEDINGS{ $tag,
+AUTHOR    = {$author}, 
+TITLE     = {$title},
+BOOKTITLE = {$booktitle},
+YEAR      = {$year},
+#if ($editor)
+Editor    = {$editor},
+#end
+#if ($pages)
+Pages     = {$pages},
+#end
+#if ($organization)
+Organization = {$organization},
+#end
+#if ($publisher)
+Publisher = {$publisher},
+#end
+#if ($address)
+Address    = {$address},
+#end
+#if ($month)
+Month     = {$month},
+#end
+#if ($note)
+Note      = {$note},
+#end
+#if ($key)
+Key       = {$key}
+#end
+}

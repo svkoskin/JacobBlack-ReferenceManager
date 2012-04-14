@@ -1,5 +1,5 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -29,8 +29,6 @@
             <c:if test="${ not empty viite.editor}"><label>Editor:</label> ${viite.editor} <br/></c:if>
             <c:if test="${ not empty viite.organization}"><label>Organization:</label> ${viite.organization} <br/></c:if>
             <c:if test="${ not empty viite.address}"><label>Address:</label> ${viite.address} <br/></c:if>
-            
-            <br/><br/>
         </c:forEach>
         
         

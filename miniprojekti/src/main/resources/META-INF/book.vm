@@ -1,0 +1,32 @@
+@BOOK{ $tag,
+#if ($author) 
+AUTHOR    = {$author}, 
+#end
+#if ($editor)
+EDITOR    = {$editor},
+#end
+TITLE     = {$title},
+PUBLISHER = {$publisher},
+YEAR      = {$year},
+#if ($volume)
+Volume    = {$volume},
+#end
+#if ($series)
+Series    = {$series},
+#end
+#if ($address)
+Address   = {$address},
+#end
+#if ($edition)
+Edition   = {$edition},
+#end
+#if ($month)
+Month     = {$month},
+#end
+#if ($note)
+Note      = {$note},
+#end
+#if ($key)
+Key       = {$key}
+#end
+}
