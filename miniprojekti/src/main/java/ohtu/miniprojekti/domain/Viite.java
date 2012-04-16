@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import ohtu.miniprojekti.formvalidation.ArticleValidationObject;
 import ohtu.miniprojekti.formvalidation.BookValidationObject;
+import ohtu.miniprojekti.formvalidation.InproceedingsValidationObject;
 
 @Entity
 public class Viite implements Serializable {
@@ -27,7 +28,10 @@ public class Viite implements Serializable {
     private String publisher;
     private String series;
     private String edition;
-    
+    private String editor;
+    private String organization;
+    private String address;
+    private String booktitle;
 
     public Viite() {
     }
@@ -49,11 +53,25 @@ public class Viite implements Serializable {
         this.author = validationObject.getAuthor();
         this.title = validationObject.getTitle();
         this.publisher = validationObject.getPublisher();
+        this.address = validationObject.getAddress();
         this.publicationYear = validationObject.getPublicationYear();
         this.volume = validationObject.getVolume();
         this.series = validationObject.getSeries();
         this.edition = validationObject.getEdition();
         this.pages = validationObject.getPages();
+    }
+
+    public Viite(InproceedingsValidationObject validationObject) {
+        this.viiteType = ViiteType.INPROCEEDINGS;
+        this.author = validationObject.getAuthor();
+        this.title = validationObject.getTitle();
+        this.booktitle = validationObject.getBooktitle();
+        this.publicationYear = validationObject.getPublicationYear();
+        this.editor = validationObject.getEditor();
+        this.pages = validationObject.getPages();
+        this.organization = validationObject.getOrganization();
+        this.publisher = validationObject.getPublisher();
+        this.address = validationObject.getAddress();
     }
 
     
@@ -154,6 +172,37 @@ public class Viite implements Serializable {
         this.series = series;
     }
 
-    
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getEditor() {
+        return editor;
+    }
+
+    public void setEditor(String editor) {
+        this.editor = editor;
+    }
+
+    public String getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(String organization) {
+        this.organization = organization;
+    }
+
+    public String getBooktitle() {
+        return booktitle;
+    }
+
+    public void setBooktitle(String booktitle) {
+        this.booktitle = booktitle;
+    }
+
     
 }

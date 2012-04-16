@@ -4,6 +4,7 @@ import javax.validation.Valid;
 import ohtu.miniprojekti.domain.Viite;
 import ohtu.miniprojekti.formvalidation.ArticleValidationObject;
 import ohtu.miniprojekti.formvalidation.BookValidationObject;
+import ohtu.miniprojekti.formvalidation.InproceedingsValidationObject;
 import ohtu.miniprojekti.service.ViiteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -62,6 +63,23 @@ public class MainController {
         return "redirect:home";
     }
 
+    @RequestMapping(value = "inproceedings", method = RequestMethod.GET)
+    public String getInproceedings(Model model) {
+        model.addAttribute("viite", new InproceedingsValidationObject());
+        return "inproceedings";
+    }
+    
+    @RequestMapping(value = "inproceedings", method = RequestMethod.POST)
+    public String postInproceedings(@Valid @ModelAttribute("viite") InproceedingsValidationObject viiteValidationObj, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()) return "inproceedings";
+        
+        Viite viite = new Viite(viiteValidationObj);
+        viite = viiteService.save(viite);
+        
+        return "redirect:home";
+    }
+
+    
     @RequestMapping(value = "listaus", method = RequestMethod.GET)
     public String getListaaKaikki(Model model) {
         model.addAttribute("viitteet", viiteService.findAll());

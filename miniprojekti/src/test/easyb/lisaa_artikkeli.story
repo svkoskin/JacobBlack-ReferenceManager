@@ -6,13 +6,8 @@ description "Käyttäjä voi tallettaa viitteen artikkeliin"
 scenario "Käyttäjä tallettaa viitteen, jossa on kaikki pakolliset viitteet", {
     given "Viitteenlisäyslomake on avattu", {
         driver = new HtmlUnitDriver()
-<<<<<<< HEAD
-        driver.get("http://localhost:8084/miniprojekti/home")
-        elem = driver.findElement(By.linkText("Lisää artikkeli"))
-=======
         driver.get("http://localhost:8080/miniprojekti")
         elem = driver.findElement(By.id("add_article"))
->>>>>>> b91b290645dedae4165ba6439c89033d99d5a2d9
         elem.click()
         
     }
@@ -55,6 +50,6 @@ scenario "Käyttäjä tallettaa viitteen, josta puuttuu yksi pakollinen tieto", 
         elem.submit()
     }
     then "Järjestelmä ei talleta viitettä, ja palauttaa käyttäjän lomakkeelle", {
-        driver.getPageSource().contains("Uusi viite").shouldBe true
+        driver.getPageSource().contains("New entry (Article)").shouldBe true
     }
 }

@@ -7,22 +7,22 @@
         <title>Miniprojekti</title>
     </head>
     <body>
-        <h1>Vihavaisen viitteet</h1>
+        <h1>Vihavainen's references</h1>
         <br/>
         
-        <h2>Lisää uusi viite:</h2>
+        <h2>Add new reference entry:</h2>
         <ul>
-            <li><a href="artikkeli">Lisää artikkeli</a></li>
-            <li><a href="artikkeli" id="add_article">Lisää artikkeli</a></li>
-            <li><a href="kirja" id="add_book">Lisää kirja</a></li>
+            <li><a href="artikkeli" id="add_article">Add article</a></li>
+            <li><a href="kirja" id="add_book">Add book</a></li>
+            <li><a href="inproceedings" id="add_inproceedings">Add inproceedings</a></li>
         </ul>
         
-        <h2>Tallennetut viitteet:</h2>
+        <h2>Saved references:</h2>
         <ul>
-            <li><a href="listaus">Näytä kaikki</a></li>
+            <li><a href="listaus">List all</a></li>
         </ul>
         
         <br/>
-        <h2>Viitteitä tietokannassa: ${viitecount}</h2>
+        <h2>Number of references in database: ${viitecount}</h2>
     </body>
 </html>
