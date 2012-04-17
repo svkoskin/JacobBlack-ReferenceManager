@@ -1,4 +1,5 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,9 +14,9 @@
 
     </head>
     <body>
-        <h1>New entry (Inproceedings):</h1>
-        <form:form commandName="viite" action="inproceedings" method="POST">
-            <label>*Author: </label><form:input path="author" /> <form:errors path="author" /><br/>
+        <h1>New/Edit entry (Inproceedings):</h1>
+        <c:url value="/inproceedings" var="action"/>
+        <form:form commandName="viite" action="${action}" method="POST">            <label>*Author: </label><form:input path="author" /> <form:errors path="author" /><br/>
             <label>*Title: </label><form:input path="title" /> <form:errors path="title" /><br/>
             <label>*Booktitle: </label><form:input path="booktitle" /> <form:errors path="booktitle" /><br/>
             <label>*Year: </label><form:input path="publicationYear" /> <form:errors path="publicationYear" /><br/>
@@ -24,6 +25,7 @@
             <label>Organization: </label><form:input path="organization" /> <form:errors path="organization" /><br/>
             <label>Publisher: </label><form:input path="publisher" /> <form:errors path="publisher" /><br/>
             <label>Address: </label><form:input path="address" /> <form:errors path="address" /><br/>
+            <form:hidden path="id"/>
             <span><input type="submit" value="Send" /></span>
         </form:form>   
         <br/>

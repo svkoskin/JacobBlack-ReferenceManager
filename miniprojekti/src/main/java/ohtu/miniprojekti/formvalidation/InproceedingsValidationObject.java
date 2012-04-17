@@ -1,8 +1,10 @@
 package ohtu.miniprojekti.formvalidation;
 
 import javax.validation.constraints.*;
+import ohtu.miniprojekti.domain.Viite;
+import ohtu.miniprojekti.domain.Viite.ViiteType;
 
-public class InproceedingsValidationObject {
+public class InproceedingsValidationObject implements ViiteValidationObject{
     
     @NotNull(message="Viitteellä täytyy olla vähintään yksi tekijä.")
     @Size(min=1, max=50, message="Tekijän pituus 1-50 merkkiä.")
@@ -24,24 +26,47 @@ public class InproceedingsValidationObject {
     private String publicationYear;
     
     @Size(min=0, max=50, message="Editor name must be at most 50 characters.")
-    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\']+", message="Virheellinen nimi.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\']*", message="Virheellinen nimi.")
     private String editor;
     
     @Pattern(regexp="([1-9][0-9]*(\\-[1-9][0-9]*)?)?", message="Anna muodossa xxx-yyy.")
     private String pages;
 
     @Size(min=0, max=50, message="Organization name must be at most 50 characters.")
-    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\']+", message="Virheellinen nimi.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\']*", message="Virheellinen nimi.")
     private String organization;
     
     @Size(min=0, max=50, message="Julkaisijan pituus korkeintaan 50 merkkiä.")
-    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\!\\']+", message="Virheellinen nimi.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\!\\']*", message="Virheellinen nimi.")
     private String publisher;
     
     @Size(min=0, max=50, message="Osoitteen pituus korkeintaan 50 merkkiä.")
-    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\!\\']+", message="Virheellinen nimi.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\!\\']*", message="Virheellinen nimi.")
     private String address;
+    
+    private Long id;
+    private ViiteType viiteType;
 
+    public InproceedingsValidationObject() {
+        viiteType = ViiteType.INPROCEEDINGS;
+        this.id = -1L;
+    }
+
+    public InproceedingsValidationObject(Viite viite) {
+        viiteType = ViiteType.INPROCEEDINGS;
+        this.id = viite.getId();
+        this.author = viite.getAuthor();
+        this.title = viite.getTitle();
+        this.booktitle = viite.getBooktitle();
+        this.publicationYear = viite.getPublicationYear();
+        this.editor = viite.getEditor();
+        this.pages = viite.getPages();
+        this.organization = viite.getOrganization();
+        this.publisher = viite.getPublisher();
+        this.address = viite.getAddress();
+    }
+    
+    
     public String getAddress() {
         return address;
     }
@@ -113,6 +138,23 @@ public class InproceedingsValidationObject {
     public void setTitle(String title) {
         this.title = title;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public ViiteType getViiteType() {
+        return viiteType;
+    }
+
+    public void setViiteType(ViiteType viiteType) {
+        this.viiteType = viiteType;
+    }
+    
     
 
 }

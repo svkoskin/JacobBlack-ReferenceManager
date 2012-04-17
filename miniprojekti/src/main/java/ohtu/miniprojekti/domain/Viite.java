@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import ohtu.miniprojekti.formvalidation.ArticleValidationObject;
 import ohtu.miniprojekti.formvalidation.BookValidationObject;
 import ohtu.miniprojekti.formvalidation.InproceedingsValidationObject;
+import ohtu.miniprojekti.formvalidation.ViiteValidationObject;
 
 @Entity
 public class Viite implements Serializable {
@@ -35,9 +36,8 @@ public class Viite implements Serializable {
 
     public Viite() {
     }
-
     
-    public Viite(ArticleValidationObject validationObject) {
+    public void updateFromValidationObj(ArticleValidationObject validationObject) {
         this.viiteType = ViiteType.ARTICLE;
         this.author = validationObject.getAuthor();
         this.title = validationObject.getTitle();
@@ -48,7 +48,7 @@ public class Viite implements Serializable {
         this.pages = validationObject.getPages();
     }
 
-    public Viite(BookValidationObject validationObject) {
+    public void updateFromValidationObj(BookValidationObject validationObject) {
         this.viiteType = ViiteType.BOOK;
         this.author = validationObject.getAuthor();
         this.title = validationObject.getTitle();
@@ -61,7 +61,7 @@ public class Viite implements Serializable {
         this.pages = validationObject.getPages();
     }
 
-    public Viite(InproceedingsValidationObject validationObject) {
+    public void updateFromValidationObj(InproceedingsValidationObject validationObject) {
         this.viiteType = ViiteType.INPROCEEDINGS;
         this.author = validationObject.getAuthor();
         this.title = validationObject.getTitle();

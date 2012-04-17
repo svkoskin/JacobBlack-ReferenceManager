@@ -2,6 +2,7 @@ package ohtu.miniprojekti.controller;
 
 import javax.validation.Valid;
 import ohtu.miniprojekti.domain.Viite;
+import ohtu.miniprojekti.domain.Viite.ViiteType;
 import ohtu.miniprojekti.formvalidation.ArticleValidationObject;
 import ohtu.miniprojekti.formvalidation.BookValidationObject;
 import ohtu.miniprojekti.formvalidation.InproceedingsValidationObject;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -37,11 +39,32 @@ public class MainController {
         return "artikkeli";
     }
     
+    @RequestMapping(value = "edit/{id}", method = RequestMethod.GET)
+    public String getEdit(Model model, @PathVariable Long id) {
+        Viite viite = viiteService.findById(id);
+        if(viite == null) return "redirect:/home";
+        
+        if (viite.getViiteType() == ViiteType.ARTICLE){
+            model.addAttribute("viite", new ArticleValidationObject(viite));
+            return "artikkeli";
+        }
+        else if (viite.getViiteType() == ViiteType.BOOK){
+            model.addAttribute("viite", new BookValidationObject(viite));
+            return "kirja";
+        }
+        else if (viite.getViiteType() == ViiteType.INPROCEEDINGS){
+            model.addAttribute("viite", new InproceedingsValidationObject(viite));
+            return "inproceedings";
+        };
+        return "redirect:/home";
+    }
+    
     @RequestMapping(value = "artikkeli", method = RequestMethod.POST)
     public String postArtikkeli(@Valid @ModelAttribute("viite") ArticleValidationObject viiteValidationObj, BindingResult bindingResult) {
         if(bindingResult.hasErrors()) return "artikkeli";
         
-        Viite viite = new Viite(viiteValidationObj);
+        Viite viite = viiteService.getViite(viiteValidationObj);
+        viite.updateFromValidationObj(viiteValidationObj);
         viite = viiteService.save(viite);
         
         return "redirect:home";
@@ -57,7 +80,8 @@ public class MainController {
     public String postKirja(@Valid @ModelAttribute("viite") BookValidationObject viiteValidationObj, BindingResult bindingResult) {
         if(bindingResult.hasErrors()) return "kirja";
         
-        Viite viite = new Viite(viiteValidationObj);
+        Viite viite = viiteService.getViite(viiteValidationObj);
+        viite.updateFromValidationObj(viiteValidationObj);
         viite = viiteService.save(viite);
         
         return "redirect:home";
@@ -73,7 +97,8 @@ public class MainController {
     public String postInproceedings(@Valid @ModelAttribute("viite") InproceedingsValidationObject viiteValidationObj, BindingResult bindingResult) {
         if(bindingResult.hasErrors()) return "inproceedings";
         
-        Viite viite = new Viite(viiteValidationObj);
+        Viite viite = viiteService.getViite(viiteValidationObj);
+        viite.updateFromValidationObj(viiteValidationObj);
         viite = viiteService.save(viite);
         
         return "redirect:home";

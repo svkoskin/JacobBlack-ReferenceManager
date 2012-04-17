@@ -46,6 +46,6 @@ scenario "Käyttäjä tallettaa viitteen, josta puuttuu yksi pakollinen tieto", 
         elem.submit()
     }
     then "Järjestelmä ei talleta viitettä, ja palauttaa käyttäjän lomakkeelle", {
-        driver.getPageSource().contains("New entry (Article)").shouldBe true
+        driver.getPageSource().contains("New/Edit entry (Article)").shouldBe true
     }
 }

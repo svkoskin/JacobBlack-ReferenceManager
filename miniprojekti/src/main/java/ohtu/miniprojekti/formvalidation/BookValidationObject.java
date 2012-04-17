@@ -1,8 +1,10 @@
 package ohtu.miniprojekti.formvalidation;
 
 import javax.validation.constraints.*;
+import ohtu.miniprojekti.domain.Viite;
+import ohtu.miniprojekti.domain.Viite.ViiteType;
 
-public class BookValidationObject {
+public class BookValidationObject implements ViiteValidationObject{
     
     @NotNull(message="Viitteellä täytyy olla vähintään yksi tekijä.")
     @Size(min=1, max=50, message="Tekijän pituus 1-50 merkkiä.")
@@ -27,19 +29,42 @@ public class BookValidationObject {
     private String volume;
     
     @Size(min=0, max=50, message="Julkaisusarjan pituus korkeintaan 50 merkkiä.")
-    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\!\\']+", message="Virheellinen nimi.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\!\\']*", message="Virheellinen nimi.")
     private String series;
     
     @Size(min=0, max=20, message="Painos korkeintaan 20 merkkiä.")
-    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\']+", message="Virheellinen nimi.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\']*", message="Virheellinen nimi.")
     private String edition;
     
     @Pattern(regexp="([1-9][0-9]*(\\-[1-9][0-9]*)?)?", message="Anna muodossa xxx-yyy.")
     private String pages;
 
     @Size(min=0, max=50, message="Osoitteen pituus korkeintaan 50 merkkiä.")
-    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\!\\']+", message="Virheellinen nimi.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\!\\']*", message="Virheellinen nimi.")
     private String address;
+
+    
+    private Long id;
+    private Viite.ViiteType viiteType;
+
+    public BookValidationObject() {
+        viiteType = Viite.ViiteType.BOOK;
+        this.id = -1L;
+    }
+
+    public BookValidationObject(Viite viite) {
+        viiteType = Viite.ViiteType.BOOK;
+        this.id = viite.getId();
+        this.author = viite.getAuthor();
+        this.title = viite.getTitle();
+        this.publisher = viite.getPublisher();
+        this.publicationYear = viite.getPublicationYear();
+        this.volume = viite.getVolume();
+        this.series = viite.getSeries();
+        this.edition = viite.getEdition();
+        this.pages = viite.getPages();
+        this.address = viite.getAddress();
+    }
     
 
     public String getAuthor() {
@@ -112,6 +137,22 @@ public class BookValidationObject {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public ViiteType getViiteType() {
+        return viiteType;
+    }
+
+    public void setViiteType(ViiteType viiteType) {
+        this.viiteType = viiteType;
     }
 
     
