@@ -6,32 +6,32 @@ import ohtu.miniprojekti.domain.Viite.ViiteType;
 
 public class ArticleValidationObject implements ViiteValidationObject{
     
-    @NotNull(message="Viitteellä täytyy olla vähintään yksi tekijä.")
-    @Size(min=1, max=50, message="Tekijän pituus 1-50 merkkiä.")
-    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\'\\-]+", message="Virheellinen nimi. Anna muodossa \"sukunimi1, etunimi1 and sukunimi2, etunimi2\"")
+    @NotNull(message="Entry must have at least one author.")
+    @Size(min=1, max=50, message="The length must be at most 50 characters.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\'\\-]+", message="Invalid name. Please use format \"last_name1, first_name1 and last_name2, first_name2\".")
     private String author;
     
-    @NotNull(message="Viitteellä täytyy olla nimi.")
-    @Size(min=1, max=50, message="Nimen pituus 1-50 merkkiä.")
-    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\!\\']+", message="Virheellinen nimi.")
+    @NotNull(message="Entry must have a title.")
+    @Size(min=1, max=50, message="The length must be at most 50 characters.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\!\\']+", message="Invalid name.")
     private String title;
 
-    @NotNull(message="Artikkelilla täytyy olla julkaisupaikka.")
-    @Size(min=1, max=50, message="Julkaisun pituus 1-50 merkkiä.")
-    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\!\\']+", message="Virheellinen nimi.")
+    @NotNull(message="Entry must have a journal.")
+    @Size(min=1, max=50, message="The length must be at most 50 characters.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\!\\']+", message="Invalid name.")
     private String journal;
     
-    @NotNull(message="Anna julkaisun vuosi.")
-    @Digits(integer=4, fraction=0, message="Virheellinen vuosiluku.")
+    @NotNull(message="Entry must have a year.")
+    @Digits(integer=4, fraction=0, message="Invalid year.")
     private String publicationYear;
     
-    @Pattern(regexp="([1-9][0-9]*)?", message="Virheellinen numero.")
+    @Pattern(regexp="([1-9][0-9]*)?", message="Invalid number.")
     private String volume;
     
-    @Pattern(regexp="([1-9][0-9]*)?", message="Virheellinen numero.")
+    @Pattern(regexp="([1-9][0-9]*)?", message="Invalid number.")
     private String number;
     
-    @Pattern(regexp="([1-9][0-9]*(\\-[1-9][0-9]*)?)?", message="Anna muodossa xxx-yyy.")
+    @Pattern(regexp="([1-9][0-9]*(\\-[1-9][0-9]*)?)?", message="Please use format xxx-yyy.")
     private String pages;
     
     private Long id;
