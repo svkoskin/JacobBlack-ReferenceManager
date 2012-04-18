@@ -46,7 +46,7 @@ public class BookValidationObject implements ViiteValidationObject{
     private Long id;
     private Viite.ViiteType viiteType;
     
-    @Pattern(regexp="([\\wåöäÅÖÄ]+ \\d+\\w*)?", message="Invalid identifier")
+    @Pattern(regexp="([\\wåöäÅÖÄ]+\\d+\\w*)?", message="Invalid identifier")
     private String refId;
 
     public BookValidationObject() {

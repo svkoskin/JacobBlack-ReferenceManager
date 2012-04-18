@@ -67,7 +67,7 @@ public class ViiteServiceImpl implements ViiteService {
 
     @Override
     public boolean refIdValid(String refId) {
-        if (refId.matches("^[\\wåöäÅÖÄ]+ \\d+\\w*$")) {
+        if (refId.matches("^[\\wåöäÅÖÄ]+\\d+\\w*$")) {
             return refIdUnique(refId);
         } else {
             return false;
@@ -81,7 +81,11 @@ public class ViiteServiceImpl implements ViiteService {
 
         for (String s : authorTokens) {
             if (s.matches("^[A-ZÅÖÄ]\\w+$")) {
-                return s.substring(0, 4);
+                if(s.length() < 4) {
+                    return s.substring(0, s.length());
+                } else {
+                    return s.substring(0, 4);
+                }
             }
         }
 
@@ -101,7 +105,7 @@ public class ViiteServiceImpl implements ViiteService {
             yearPart = "";
         }
         
-        String refIdCandidate = this.generateAuthorPart(author) + " " + yearPart;
+        String refIdCandidate = this.generateAuthorPart(author) + yearPart;
 
         if(refIdUnique(refIdCandidate)) {
             return refIdCandidate;
