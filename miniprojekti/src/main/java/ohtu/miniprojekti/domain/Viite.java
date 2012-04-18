@@ -100,7 +100,7 @@ public class Viite implements Serializable {
         return refId;
     }
 
-    public void setStringId(String refId) {
+    public void setRefId(String refId) {
         this.refId = refId;
     }
 

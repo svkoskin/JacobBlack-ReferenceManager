@@ -21,52 +21,61 @@ public class MainController {
 
     @Autowired
     private ViiteService viiteService;
-    
+
     @RequestMapping(value = "*")
     public String any() {
         return "redirect:home";
     }
-    
+
     @RequestMapping(value = "home", method = RequestMethod.GET)
     public String home(Model model) {
         model.addAttribute("viitecount", viiteService.findAll().size());
         return "home";
     }
-    
+
     @RequestMapping(value = "artikkeli", method = RequestMethod.GET)
     public String getArtikkeli(Model model) {
         model.addAttribute("viite", new ArticleValidationObject());
         return "artikkeli";
     }
-    
+
     @RequestMapping(value = "edit/{id}", method = RequestMethod.GET)
     public String getEdit(Model model, @PathVariable Long id) {
         Viite viite = viiteService.findById(id);
-        if(viite == null) return "redirect:/home";
-        
-        if (viite.getViiteType() == ViiteType.ARTICLE){
+        if (viite == null) {
+            return "redirect:/home";
+        }
+
+        if (viite.getViiteType() == ViiteType.ARTICLE) {
             model.addAttribute("viite", new ArticleValidationObject(viite));
             return "artikkeli";
-        }
-        else if (viite.getViiteType() == ViiteType.BOOK){
+        } else if (viite.getViiteType() == ViiteType.BOOK) {
             model.addAttribute("viite", new BookValidationObject(viite));
             return "kirja";
-        }
-        else if (viite.getViiteType() == ViiteType.INPROCEEDINGS){
+        } else if (viite.getViiteType() == ViiteType.INPROCEEDINGS) {
             model.addAttribute("viite", new InproceedingsValidationObject(viite));
             return "inproceedings";
         };
         return "redirect:/home";
     }
-    
+
     @RequestMapping(value = "artikkeli", method = RequestMethod.POST)
     public String postArtikkeli(@Valid @ModelAttribute("viite") ArticleValidationObject viiteValidationObj, BindingResult bindingResult) {
-        if(bindingResult.hasErrors()) return "artikkeli";
-        
+        if (bindingResult.hasErrors()) {
+            return "artikkeli";
+        }
+
         Viite viite = viiteService.getViite(viiteValidationObj);
         viite.updateFromValidationObj(viiteValidationObj);
+
+        if (viite.getRefId() == null || !viiteService.refIdValid(viite.getRefId())) {
+            String author = viite.getAuthor();
+            String year = viite.getPublicationYear();
+            viite.setRefId(viiteService.generateRefId(author, year));
+        }
+
         viite = viiteService.save(viite);
-        
+
         return "redirect:home";
     }
 
@@ -75,15 +84,24 @@ public class MainController {
         model.addAttribute("viite", new BookValidationObject());
         return "kirja";
     }
-    
+
     @RequestMapping(value = "kirja", method = RequestMethod.POST)
     public String postKirja(@Valid @ModelAttribute("viite") BookValidationObject viiteValidationObj, BindingResult bindingResult) {
-        if(bindingResult.hasErrors()) return "kirja";
-        
+        if (bindingResult.hasErrors()) {
+            return "kirja";
+        }
+
         Viite viite = viiteService.getViite(viiteValidationObj);
         viite.updateFromValidationObj(viiteValidationObj);
+
+        if (viite.getRefId() == null || !viiteService.refIdValid(viite.getRefId())) {
+            String author = viite.getAuthor();
+            String year = viite.getPublicationYear();
+            viite.setRefId(viiteService.generateRefId(author, year));
+        }
+
         viite = viiteService.save(viite);
-        
+
         return "redirect:home";
     }
 
@@ -92,23 +110,30 @@ public class MainController {
         model.addAttribute("viite", new InproceedingsValidationObject());
         return "inproceedings";
     }
-    
+
     @RequestMapping(value = "inproceedings", method = RequestMethod.POST)
     public String postInproceedings(@Valid @ModelAttribute("viite") InproceedingsValidationObject viiteValidationObj, BindingResult bindingResult) {
-        if(bindingResult.hasErrors()) return "inproceedings";
-        
+        if (bindingResult.hasErrors()) {
+            return "inproceedings";
+        }
+
         Viite viite = viiteService.getViite(viiteValidationObj);
         viite.updateFromValidationObj(viiteValidationObj);
+
+        if (viite.getRefId() == null || !viiteService.refIdValid(viite.getRefId())) {
+            String author = viite.getAuthor();
+            String year = viite.getPublicationYear();
+            viite.setRefId(viiteService.generateRefId(author, year));
+        }
+
         viite = viiteService.save(viite);
-        
+
         return "redirect:home";
     }
 
-    
     @RequestMapping(value = "listaus", method = RequestMethod.GET)
     public String getListaaKaikki(Model model) {
         model.addAttribute("viitteet", viiteService.findAll());
         return "listaus";
     }
-    
 }

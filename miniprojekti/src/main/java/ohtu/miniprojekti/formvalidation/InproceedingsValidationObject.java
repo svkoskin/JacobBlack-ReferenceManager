@@ -5,7 +5,7 @@ import ohtu.miniprojekti.domain.Viite;
 import ohtu.miniprojekti.domain.Viite.ViiteType;
 
 public class InproceedingsValidationObject implements ViiteValidationObject{
-    
+   
     @NotNull(message="Viitteellä täytyy olla vähintään yksi tekijä.")
     @Size(min=1, max=50, message="Tekijän pituus 1-50 merkkiä.")
     @Pattern(regexp="[\\w äöåÄÖÅ\\,\\']+", message="Virheellinen nimi. Anna muodossa \"sukunimi1, etunimi1 and sukunimi2, etunimi2\"")

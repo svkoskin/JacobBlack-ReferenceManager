@@ -55,13 +55,62 @@ public class ViiteServiceImpl implements ViiteService {
 
     }
 
+    private boolean refIdUnique(String refId) {
+        List<Viite> all = this.findAll();
+        for (Viite v : all) {
+            if (v.getRefId().equals(refId)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     @Override
     public boolean refIdValid(String refId) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if (refId.matches("^[\\wåöäÅÖÄ]+ \\d+\\w*$")) {
+            return refIdUnique(refId);
+        } else {
+            return false;
+        }
+    }
+
+    private String generateAuthorPart(String author) {
+        // try to find something similar to a last name in author string
+        String[] authorTokens = author.split("[\\s\\W]");
+        String authorPart = "";
+
+        for (String s : authorTokens) {
+            if (s.matches("^[A-ZÅÖÄ]\\w+$")) {
+                return s.substring(0, 4);
+            }
+        }
+
+        // no matches
+        return author.substring(0, 1);
     }
 
     @Override
     public String generateRefId(String author, String year) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        String yearPart;
+        
+        if (year.length() == 2) {
+            yearPart = year;
+        } else if (year.length() > 2) {
+            yearPart = year.substring(year.length() - 2, year.length());
+        } else {
+            yearPart = "";
+        }
+        
+        String refIdCandidate = this.generateAuthorPart(author) + " " + yearPart;
+
+        if(refIdUnique(refIdCandidate)) {
+            return refIdCandidate;
+        } else {
+            char c = 'a';
+            while(!refIdUnique(refIdCandidate + c)) {
+                c++;
+            }
+            return refIdCandidate + c;
+        }
     }
 }

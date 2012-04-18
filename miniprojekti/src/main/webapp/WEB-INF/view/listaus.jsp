@@ -16,6 +16,7 @@
         
         <c:forEach var="viite" items="${viitteet}">
             <label>Reference ${viite.id}</label> <a href="edit/${viite.id}">edit</a><br/>
+            <c:if test="${ not empty viite.refId}"><label>Identifier:</label> ${viite.refId} <br/></c:if>
             <c:if test="${ not empty viite.author}"><label>Author:</label> ${viite.author} <br/></c:if>
             <c:if test="${ not empty viite.title}"><label>Title:</label> ${viite.title} <br/></c:if>
             <c:if test="${ not empty viite.booktitle}"><label>Booktitle:</label> ${viite.booktitle} <br/></c:if>
