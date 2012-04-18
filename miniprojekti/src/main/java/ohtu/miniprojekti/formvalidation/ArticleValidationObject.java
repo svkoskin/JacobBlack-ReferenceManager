@@ -4,6 +4,8 @@ import javax.validation.constraints.*;
 
 public class ArticleValidationObject {
     
+    private String refId;
+    
     @NotNull(message="Viitteellä täytyy olla vähintään yksi tekijä.")
     @Size(min=1, max=50, message="Tekijän pituus 1-50 merkkiä.")
     @Pattern(regexp="[\\w äöåÄÖÅ\\,\\']+", message="Virheellinen nimi. Anna muodossa \"sukunimi1, etunimi1 and sukunimi2, etunimi2\"")
@@ -31,6 +33,14 @@ public class ArticleValidationObject {
     
     @Pattern(regexp="([1-9][0-9]*(\\-[1-9][0-9]*)?)?", message="Anna muodossa xxx-yyy.")
     private String pages;
+
+    public String getRefId() {
+        return refId;
+    }
+
+    public void setRefId(String refId) {
+        this.refId = refId;
+    }    
 
     public String getAuthor() {
         return author;

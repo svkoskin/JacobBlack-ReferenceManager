@@ -9,4 +9,7 @@ public interface ViiteService {
 
     Viite save(Viite viite);
     
+    boolean refIdValid(String refId);
+    
+    String generateRefId(String author, String year);
 }

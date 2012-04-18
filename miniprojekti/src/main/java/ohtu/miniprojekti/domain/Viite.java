@@ -11,13 +11,16 @@ import ohtu.miniprojekti.formvalidation.InproceedingsValidationObject;
 
 @Entity
 public class Viite implements Serializable {
-    public enum ViiteType {ARTICLE, BOOK, INPROCEEDINGS}
-    
+
+    public enum ViiteType {
+
+        ARTICLE, BOOK, INPROCEEDINGS
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
-
     private ViiteType viiteType;
+    private String stringId;
     private String author;
     private String title;
     private String journal;
@@ -36,9 +39,9 @@ public class Viite implements Serializable {
     public Viite() {
     }
 
-    
     public Viite(ArticleValidationObject validationObject) {
         this.viiteType = ViiteType.ARTICLE;
+        this.stringId = validationObject.getRefId();
         this.author = validationObject.getAuthor();
         this.title = validationObject.getTitle();
         this.journal = validationObject.getJournal();
@@ -50,6 +53,7 @@ public class Viite implements Serializable {
 
     public Viite(BookValidationObject validationObject) {
         this.viiteType = ViiteType.BOOK;
+        this.stringId = validationObject.getRefId();
         this.author = validationObject.getAuthor();
         this.title = validationObject.getTitle();
         this.publisher = validationObject.getPublisher();
@@ -63,6 +67,7 @@ public class Viite implements Serializable {
 
     public Viite(InproceedingsValidationObject validationObject) {
         this.viiteType = ViiteType.INPROCEEDINGS;
+        this.stringId = validationObject.getRefId();
         this.author = validationObject.getAuthor();
         this.title = validationObject.getTitle();
         this.booktitle = validationObject.getBooktitle();
@@ -74,8 +79,6 @@ public class Viite implements Serializable {
         this.address = validationObject.getAddress();
     }
 
-    
-    
     public String getAuthor() {
         return author;
     }
@@ -90,6 +93,14 @@ public class Viite implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getStringId() {
+        return stringId;
+    }
+
+    public void setStringId(String stringId) {
+        this.stringId = stringId;
     }
 
     public String getJournal() {
@@ -203,6 +214,4 @@ public class Viite implements Serializable {
     public void setBooktitle(String booktitle) {
         this.booktitle = booktitle;
     }
-
-    
 }

@@ -4,6 +4,8 @@ import javax.validation.constraints.*;
 
 public class InproceedingsValidationObject {
     
+    private String refId;
+    
     @NotNull(message="Viitteellä täytyy olla vähintään yksi tekijä.")
     @Size(min=1, max=50, message="Tekijän pituus 1-50 merkkiä.")
     @Pattern(regexp="[\\w äöåÄÖÅ\\,\\']+", message="Virheellinen nimi. Anna muodossa \"sukunimi1, etunimi1 and sukunimi2, etunimi2\"")
@@ -40,7 +42,15 @@ public class InproceedingsValidationObject {
     
     @Size(min=0, max=50, message="Osoitteen pituus korkeintaan 50 merkkiä.")
     @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\!\\']+", message="Virheellinen nimi.")
-    private String address;
+    private String address;    
+
+    public String getRefId() {
+        return refId;
+    }
+
+    public void setRefId(String refId) {
+        this.refId = refId;
+    }    
 
     public String getAddress() {
         return address;

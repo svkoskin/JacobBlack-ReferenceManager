@@ -22,5 +22,15 @@ public class ViiteServiceImpl implements ViiteService {
     public List<Viite> findAll(){
         return viiteRepository.findAll();
     }
+
+    @Override
+    public boolean refIdValid(String refId) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public String generateRefId(String author, String year) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
     
 }
