@@ -37,7 +37,7 @@ public class ArticleValidationObject implements ViiteValidationObject{
     private Long id;
     private ViiteType viiteType;
     
-    @Pattern(regexp="([\\wåöäÅÖÄ]+ \\d+\\w*)?", message="Invalid identifier")
+    @Pattern(regexp="([\\wåöäÅÖÄ]+\\d+\\w*)?", message="Invalid identifier")
     private String refId;
     
     public ArticleValidationObject() {
