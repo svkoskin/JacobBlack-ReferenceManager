@@ -1,10 +1,10 @@
 package ohtu.miniprojekti.formvalidation;
 
 import javax.validation.constraints.*;
+import ohtu.miniprojekti.domain.Viite;
+import ohtu.miniprojekti.domain.Viite.ViiteType;
 
-public class ArticleValidationObject {
-    
-    private String refId;
+public class ArticleValidationObject implements ViiteValidationObject{
     
     @NotNull(message="Viitteellä täytyy olla vähintään yksi tekijä.")
     @Size(min=1, max=50, message="Tekijän pituus 1-50 merkkiä.")
@@ -34,6 +34,29 @@ public class ArticleValidationObject {
     @Pattern(regexp="([1-9][0-9]*(\\-[1-9][0-9]*)?)?", message="Anna muodossa xxx-yyy.")
     private String pages;
 
+    private Long id;
+    private ViiteType viiteType;
+    
+    private String refId;
+    
+    public ArticleValidationObject() {
+        viiteType = viiteType.ARTICLE;
+        this.id = -1L;
+    }
+    
+    public ArticleValidationObject(Viite viite) {
+        viiteType = viiteType.ARTICLE;
+        this.id = viite.getId();
+        this.refId = viite.getRefId();
+        this.author = viite.getAuthor();
+        this.title = viite.getTitle();
+        this.journal = viite.getJournal();
+        this.publicationYear = viite.getPublicationYear();
+        this.volume = viite.getVolume();
+        this.number = viite.getNumber();
+        this.pages = viite.getPages();
+    }
+
     public String getRefId() {
         return refId;
     }
@@ -41,7 +64,7 @@ public class ArticleValidationObject {
     public void setRefId(String refId) {
         this.refId = refId;
     }    
-
+    
     public String getAuthor() {
         return author;
     }
@@ -98,7 +121,22 @@ public class ArticleValidationObject {
         this.publicationYear = publicationYear;
     }
 
-    
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public ViiteType getViiteType() {
+        return viiteType;
+    }
+
+    public void setViiteType(ViiteType viiteType) {
+        this.viiteType = viiteType;
+    }
+
     
     
 }
