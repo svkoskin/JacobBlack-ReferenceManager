@@ -21,6 +21,7 @@
             <label>*Title: </label><form:input path="title" /> <form:errors path="title" /><br/>
             <label>*Journal: </label><form:input path="journal" /> <form:errors path="journal" /><br/>
             <label>*Year: </label><form:input path="publicationYear" /> <form:errors path="publicationYear" /><br/>
+            <label>Identifier: </label><form:input path="refId" /> <form:errors path="refId" /><br/>
             <label>Volume: </label><form:input path="volume" /> <form:errors path="volume" /><br/>
             <label>Number: </label><form:input path="number" /> <form:errors path="number" /><br/>
             <label>Pages: </label><form:input path="pages" /> <form:errors path="pages" /><br/>

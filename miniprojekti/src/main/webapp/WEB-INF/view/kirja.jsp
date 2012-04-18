@@ -21,6 +21,7 @@
             <label>*Title: </label><form:input path="title" /> <form:errors path="title" /><br/>
             <label>*Publisher: </label><form:input path="publisher" /> <form:errors path="publisher" /><br/>
             <label>*Year: </label><form:input path="publicationYear" /> <form:errors path="publicationYear" /><br/>
+            <label>Identifier: </label><form:input path="refId" /> <form:errors path="refId" /><br/>
             <label>Address: </label><form:input path="address" /> <form:errors path="address" /><br/>
             <label>Volume: </label><form:input path="volume" /> <form:errors path="volume" /><br/>
             <label>Series: </label><form:input path="series" /> <form:errors path="series" /><br/>

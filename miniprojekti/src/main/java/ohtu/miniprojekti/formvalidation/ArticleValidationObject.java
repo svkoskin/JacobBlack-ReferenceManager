@@ -33,10 +33,11 @@ public class ArticleValidationObject implements ViiteValidationObject{
     
     @Pattern(regexp="([1-9][0-9]*(\\-[1-9][0-9]*)?)?", message="Anna muodossa xxx-yyy.")
     private String pages;
-
+    
     private Long id;
     private ViiteType viiteType;
     
+    @Pattern(regexp="([\\wåöäÅÖÄ]+ \\d+\\w*)?", message="Invalid identifier")
     private String refId;
     
     public ArticleValidationObject() {

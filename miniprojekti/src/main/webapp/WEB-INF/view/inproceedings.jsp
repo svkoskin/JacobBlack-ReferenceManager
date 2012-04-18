@@ -19,7 +19,8 @@
         <form:form commandName="viite" action="${action}" method="POST">            <label>*Author: </label><form:input path="author" /> <form:errors path="author" /><br/>
             <label>*Title: </label><form:input path="title" /> <form:errors path="title" /><br/>
             <label>*Booktitle: </label><form:input path="booktitle" /> <form:errors path="booktitle" /><br/>
-            <label>*Year: </label><form:input path="publicationYear" /> <form:errors path="publicationYear" /><br/>
+            <label>*Year: </label><form:input path="publicationYear" /> <form:errors path="publicationYear" /><br/>            
+            <label>Identifier: </label><form:input path="refId" /> <form:errors path="refId" /><br/>
             <label>Editor: </label><form:input path="editor" /> <form:errors path="editor" /><br/>
             <label>Pages: </label><form:input path="pages" /> <form:errors path="pages" /><br/>
             <label>Organization: </label><form:input path="organization" /> <form:errors path="organization" /><br/>
