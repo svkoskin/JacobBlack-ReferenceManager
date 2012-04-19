@@ -7,18 +7,18 @@ import ohtu.miniprojekti.domain.Viite.ViiteType;
 public class BookValidationObject implements ViiteValidationObject{
     
     @NotNull(message="Entry must have at least one author.")
-    @Size(min=1, max=50, message="The length must be at most 50 characters.")
-    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\'\\-]+", message="Invalid name. Please use format \"last_name1, first_name1 and last_name2, first_name2\".")
+    @Size(min=1, max=200, message="The length must be at most 200 characters.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\'\\-\\.]+", message="Invalid name. Please use format \"last_name1, first_name1 and last_name2, first_name2\".")
     private String author;
     
     @NotNull(message="Entry must have a title.")
-    @Size(min=1, max=50, message="The length must be at most 50 characters.")
-    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\!\\']+", message="Invalid name.")
+    @Size(min=1, max=200, message="The length must be at most 200 characters.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\!\\'\\.\\(\\)]+", message="Invalid name.")
     private String title;
     
     @NotNull(message="Entry must have a publisher.")
-    @Size(min=1, max=50, message="The length must be at most 50 characters.")
-    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\!\\']+", message="Invalid name.")
+    @Size(min=1, max=200, message="The length must be at most 200 characters.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\!\\'\\.]+", message="Invalid name.")
     private String publisher;
     
     @NotNull(message="Entry must have a year.")
@@ -28,19 +28,19 @@ public class BookValidationObject implements ViiteValidationObject{
     @Pattern(regexp="([1-9][0-9]*)?", message="Invalid number.")
     private String volume;
     
-    @Size(min=0, max=50, message="The length must be at most 50 characters.")
-    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\!\\']*", message="Invalid name.")
+    @Size(min=0, max=200, message="The length must be at most 200 characters.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\!\\'\\.]*", message="Invalid name.")
     private String series;
     
-    @Size(min=0, max=20, message="The length must be at most 20 characters.")
-    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\']*", message="Invalid name.")
+    @Size(min=0, max=200, message="The length must be at most 200 characters.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\'\\.]*", message="Invalid name.")
     private String edition;
     
     @Pattern(regexp="([1-9][0-9]*(\\-[1-9][0-9]*)?)?", message="Please use format xxx-yyy.")
     private String pages;
 
-    @Size(min=0, max=50, message="The length must be at most 50 characters.")
-    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\!\\']*", message="Invalid name.")
+    @Size(min=0, max=200, message="The length must be at most 200 characters.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\!\\'\\.]*", message="Invalid name.")
     private String address;
 
     private Long id;

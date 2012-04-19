@@ -7,41 +7,41 @@ import ohtu.miniprojekti.domain.Viite.ViiteType;
 public class InproceedingsValidationObject implements ViiteValidationObject{
    
     @NotNull(message="Entry must have at least one author.")
-    @Size(min=1, max=50, message="The length must be at most 50 characters.")
-    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\'\\-]+", message="Invalid name. Please use format \"last_name1, first_name1 and last_name2, first_name2\".")
+    @Size(min=1, max=200, message="The length must be at most 200 characters.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\'\\-\\.]+", message="Invalid name. Please use format \"last_name1, first_name1 and last_name2, first_name2\".")
     private String author;
     
     @NotNull(message="Entry must have a title.")
-    @Size(min=1, max=50, message="The length must be at most 50 characters.")
-    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\!\\']+", message="Invalid name.")
+    @Size(min=1, max=200, message="The length must be at most 200 characters.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\!\\'\\.\\(\\)]+", message="Invalid name.")
     private String title;
     
     @NotNull(message="Entry must have a booktitle.")
-    @Size(min=1, max=50, message="The length must be at most 50 characters.")
-    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\!\\']+", message="Invalid name")
+    @Size(min=1, max=200, message="The length must be at most 200 characters.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\!\\'\\.\\(\\)]+", message="Invalid name")
     private String booktitle;
     
     @NotNull(message="Entry must have a year.")
     @Digits(integer=4, fraction=0, message="Invalid year.")
     private String publicationYear;
     
-    @Size(min=0, max=50, message="The length must be at most 50 characters.")
-    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\']*", message="Invalid name.")
+    @Size(min=0, max=200, message="The length must be at most 200 characters.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\'\\.]*", message="Invalid name.")
     private String editor;
     
     @Pattern(regexp="([1-9][0-9]*(\\-[1-9][0-9]*)?)?", message="Please use format xxx-yyy.")
     private String pages;
 
-    @Size(min=0, max=50, message="The length must be at most 50 characters.")
-    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\']*", message="Invalid name.")
+    @Size(min=0, max=200, message="The length must be at most 200 characters.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\'\\.]*", message="Invalid name.")
     private String organization;
     
-    @Size(min=0, max=50, message="The length must be at most 50 characters.")
-    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\!\\']*", message="Invalid name.")
+    @Size(min=0, max=200, message="The length must be at most 200 characters.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\!\\'\\.]*", message="Invalid name.")
     private String publisher;
     
-    @Size(min=0, max=50, message="The length must be at most 50 characters.")
-    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\!\\']*", message="Invalid name.")
+    @Size(min=0, max=200, message="The length must be at most 200 characters.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\-\\:\\!\\'\\.]*", message="Invalid name.")
     private String address;
     
     private Long id;
