@@ -34,7 +34,7 @@ public class generateBibtex {
             p.setProperty("resource.loader", "class");  
             p.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath"); 
             p.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
-         
+            p.setProperty("runtime.log.logsystem.class","org.apache.velocity.runtime.log.NullLogSystem");
         engine.init(p);
         
         }catch(Exception e){
