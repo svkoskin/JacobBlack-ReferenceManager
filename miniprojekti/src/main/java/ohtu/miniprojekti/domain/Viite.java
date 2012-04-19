@@ -9,6 +9,7 @@ import ohtu.miniprojekti.formvalidation.ArticleValidationObject;
 import ohtu.miniprojekti.formvalidation.BookValidationObject;
 import ohtu.miniprojekti.formvalidation.InproceedingsValidationObject;
 import ohtu.miniprojekti.formvalidation.ViiteValidationObject;
+import ohtu.miniprojekti.bibtex.generateBibtex;
 
 @Entity
 public class Viite implements Serializable {
@@ -36,6 +37,8 @@ public class Viite implements Serializable {
     private String organization;
     private String address;
     private String booktitle;
+    
+    
 
     public Viite() {
     }
@@ -214,5 +217,13 @@ public class Viite implements Serializable {
 
     public void setBooktitle(String booktitle) {
         this.booktitle = booktitle;
+    }
+    
+    public void setBibtex(){
+    }
+    
+    public String getBibtex(){
+        generateBibtex tex = new generateBibtex();
+        return tex.generateBibtex(this);
     }
 }

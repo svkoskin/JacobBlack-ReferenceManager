@@ -20,7 +20,7 @@ import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
 public class generateBibtex {
  
     
-    public StringBuffer generateBibtex(Viite viite){
+    public String generateBibtex(Viite viite){
         
         VelocityEngine engine = new VelocityEngine();
         Template t;
@@ -61,27 +61,41 @@ public class generateBibtex {
             }
                      
         // push everything to context    
-        context.put("tag", "TAGTAG");
-        context.put("author", viite.getAuthor());
-        context.put("editor", viite.getEditor());
-        context.put("title", viite.getTitle());
-        context.put("booktitle", viite.getBooktitle());
-        context.put("publisher", viite.getPublisher());
-        context.put("journal",viite.getJournal());
+        context.put("tag",  viite.getRefId());
+        context.put("author", u2b(viite.getAuthor()));
+        context.put("editor", u2b(viite.getEditor()));
+        context.put("title", u2b(viite.getTitle()));
+        context.put("booktitle", u2b(viite.getBooktitle()));
+        context.put("publisher", u2b(viite.getPublisher()));
+        context.put("journal",u2b(viite.getJournal()));
         context.put("year", viite.getPublicationYear());
-        context.put("volume",viite.getVolume());
-        context.put("series",viite.getSeries());
-        context.put("address",viite.getAddress());
-        context.put("edition",viite.getEdition());
-        context.put("address",viite.getAddress());
-        context.put("organization",viite.getOrganization());
+        context.put("pages",u2b(viite.getPages()));
+        context.put("volume",u2b(viite.getVolume()));
+        context.put("series",u2b(viite.getSeries()));
+        context.put("address",u2b(viite.getAddress()));
+        context.put("edition",u2b(viite.getEdition()));
+        context.put("address",u2b(viite.getAddress()));
+        context.put("organization",u2b(viite.getOrganization()));
         
         t.merge( context, writer );
         
         }catch(Exception e){
             System.out.println(e);
         }
+
         
-        return writer.getBuffer();
+        return writer.getBuffer().toString();
     }
+   private String u2b(String s){
+       
+       if((s == null)||("".equals(s))){
+           return null;
+       }
+       s=s.replaceAll("Ä", "\\\\\"{A}")
+          .replaceAll("ä", "\\\\\"{a}")
+          .replaceAll("Ö", "\\\\\"{O}")
+          .replaceAll("ö", "\\\\\"{o}");
+   return s;
+   
+  }
 }

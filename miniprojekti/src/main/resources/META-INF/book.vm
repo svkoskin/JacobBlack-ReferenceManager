@@ -8,6 +8,9 @@ EDITOR    = {$editor},
 TITLE     = {$title},
 PUBLISHER = {$publisher},
 YEAR      = {$year},
+#if ($pages)
+Pages    = {$pages},
+#end
 #if ($volume)
 Volume    = {$volume},
 #end

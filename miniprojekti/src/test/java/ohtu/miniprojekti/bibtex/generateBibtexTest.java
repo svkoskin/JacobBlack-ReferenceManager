@@ -9,7 +9,7 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
+import org.junit.Assert;
 /**
  *
  * @author sam
@@ -37,33 +37,38 @@ public class generateBibtexTest {
         Viite testiViite = new Viite();
         generateBibtex tex = new generateBibtex();
         
+        String test1="@BOOK{ MORI50,\nAUTHOR    = {Moriarty, James},\nTITLE     = {A Treatise on the Binomial Theorem},\nPUBLISHER = {Miscatonic University Press},\nYEAR      = {1850},\n}";
         
         testiViite.setViiteType(Viite.ViiteType.BOOK);
+        testiViite.setRefId("MORI50");
         testiViite.setAuthor("Moriarty, James");
         testiViite.setTitle("A Treatise on the Binomial Theorem");
         testiViite.setPublicationYear("1850");
         testiViite.setPublisher("Miscatonic University Press");
-        StringBuffer test = tex.generateBibtex(testiViite);
+        String test = tex.generateBibtex(testiViite);
         System.out.println(test);
         
         Viite testiViite2 = new Viite();
         testiViite2.setViiteType(Viite.ViiteType.ARTICLE);
+        testiViite.setRefId("MORI30");
         testiViite2.setAuthor("Moriarty, James");
         testiViite2.setTitle("Essays on chess openings");
         testiViite2.setPublicationYear("1830");
         testiViite2.setJournal("Miscatonic University Chess Club");
-        StringBuffer test2 = tex.generateBibtex(testiViite2);
+        testiViite2.setPages("20-34");
+        String test2 = tex.generateBibtex(testiViite2);
         System.out.println(test2);
         
         Viite testiViite3 = new Viite();
         testiViite3.setViiteType(Viite.ViiteType.INPROCEEDINGS);
-        testiViite3.setAuthor("Moriarty, James");
+        testiViite.setRefId("MORI57");
+        testiViite3.setAuthor("Möriärty, JamesÄÖ");
         testiViite3.setTitle("Of Quantum flux in temporal displacement phenomenom");
         testiViite3.setBooktitle("Assorted writings of Arkham supervillains");
         testiViite3.setPublicationYear("1857");
         testiViite3.setPublisher("Arkham City");
         testiViite3.setOrganization("Q");
-        StringBuffer test3 = tex.generateBibtex(testiViite3);
+        String test3 = tex.generateBibtex(testiViite3);
         System.out.println(test3);
         
     }

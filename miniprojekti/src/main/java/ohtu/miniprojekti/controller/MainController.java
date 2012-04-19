@@ -136,4 +136,10 @@ public class MainController {
         model.addAttribute("viitteet", viiteService.findAll());
         return "listaus";
     }
+    
+    @RequestMapping(value = "bibtex", method = RequestMethod.GET)
+    public String getBibtex(Model model) {
+        model.addAttribute("viitteet", viiteService.findAll());
+        return "bibtex";
+    }
 }
