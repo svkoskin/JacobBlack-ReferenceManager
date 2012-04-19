@@ -278,6 +278,11 @@
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>7.4.2.v20110526</version>
                 <configuration>
+                   <connectors>
+                   <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+                        <port>7777</port>
+                   </connector>
+                   </connectors>
                     <!--
                     
                     POISTA NÄMÄ KOMMENTEISTA
