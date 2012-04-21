@@ -69,7 +69,7 @@ public class MainController {
         viite.updateFromValidationObj(viiteValidationObj);
 
         if (viite.getRefId() == null || !viiteService.refIdValid(viite.getRefId())) {
-            String author = viite.getAuthor();
+            String author = viite.getAuthors().get(0);
             String year = viite.getPublicationYear();
             viite.setRefId(viiteService.generateRefId(author, year));
         }
@@ -95,7 +95,7 @@ public class MainController {
         viite.updateFromValidationObj(viiteValidationObj);
 
         if (viite.getRefId() == null || !viiteService.refIdValid(viite.getRefId())) {
-            String author = viite.getAuthor();
+            String author = viite.getAuthors().get(0);
             String year = viite.getPublicationYear();
             viite.setRefId(viiteService.generateRefId(author, year));
         }
@@ -121,7 +121,7 @@ public class MainController {
         viite.updateFromValidationObj(viiteValidationObj);
 
         if (viite.getRefId() == null || !viiteService.refIdValid(viite.getRefId())) {
-            String author = viite.getAuthor();
+            String author = viite.getAuthors().get(0);
             String year = viite.getPublicationYear();
             viite.setRefId(viiteService.generateRefId(author, year));
         }

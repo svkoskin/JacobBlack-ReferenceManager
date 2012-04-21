@@ -47,8 +47,7 @@ public class InproceedingsValidationObject implements ViiteValidationObject{
     private Long id;
     private ViiteType viiteType;
     
-    @Pattern(regexp="([\\wåöäÅÖÄ]+\\d+\\w*)?", message="Invalid identifier.")    
-
+    @Pattern(regexp="([\\wåöäÅÖÄ]+\\d+\\w*)?", message="Invalid identifier.")
     private String refId;
 
     public InproceedingsValidationObject() {
@@ -60,7 +59,7 @@ public class InproceedingsValidationObject implements ViiteValidationObject{
         viiteType = ViiteType.INPROCEEDINGS;
         this.id = viite.getId();
         this.refId = viite.getRefId();
-        this.author = viite.getAuthor();
+        this.author = viite.getAuthors().get(0);
         this.title = viite.getTitle();
         this.booktitle = viite.getBooktitle();
         this.publicationYear = viite.getPublicationYear();

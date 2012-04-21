@@ -33,5 +33,7 @@
         <br/>
         <span><h4>(*) required field</h4></span>
         
+        <span><a href="home">Return to main page</a></span>
+        
     </body>
 </html>

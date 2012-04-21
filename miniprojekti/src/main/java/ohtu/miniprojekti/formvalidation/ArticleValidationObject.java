@@ -49,7 +49,7 @@ public class ArticleValidationObject implements ViiteValidationObject{
         viiteType = viiteType.ARTICLE;
         this.id = viite.getId();
         this.refId = viite.getRefId();
-        this.author = viite.getAuthor();
+        this.author = viite.getAuthors().get(0);
         this.title = viite.getTitle();
         this.journal = viite.getJournal();
         this.publicationYear = viite.getPublicationYear();

@@ -14,7 +14,10 @@
         <h1>There's your BIBTEX:</h1>
         <br/>
         <textarea rows="40" cols="100"><c:forEach var="viite" items="${viitteet}">${viite.bibtex}</c:forEach></textarea>
-        
-        
+
+
+
+        <span><a href="home">Return to main page</a></span>
+
     </body>
 </html>

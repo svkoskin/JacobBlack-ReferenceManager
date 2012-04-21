@@ -62,7 +62,9 @@ public class generateBibtex {
                      
         // push everything to context    
         context.put("tag",  viite.getRefId());
-        context.put("author", u2b(viite.getAuthor()));
+        
+        // TODO: add each of the author, not only the first one
+        context.put("author", u2b(viite.getAuthors().get(0)));
         context.put("editor", u2b(viite.getEditor()));
         context.put("title", u2b(viite.getTitle()));
         context.put("booktitle", u2b(viite.getBooktitle()));

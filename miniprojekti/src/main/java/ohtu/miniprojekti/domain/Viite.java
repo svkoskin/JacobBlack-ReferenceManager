@@ -1,10 +1,9 @@
 package ohtu.miniprojekti.domain;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.*;
 import ohtu.miniprojekti.formvalidation.ArticleValidationObject;
 import ohtu.miniprojekti.formvalidation.BookValidationObject;
 import ohtu.miniprojekti.formvalidation.InproceedingsValidationObject;
@@ -23,7 +22,10 @@ public class Viite implements Serializable {
     private Long id;
     private ViiteType viiteType;
     private String refId;
-    private String author;
+    
+    @ElementCollection
+    private List<String> authors;
+    
     private String title;
     private String journal;
     private String volume;
@@ -41,12 +43,13 @@ public class Viite implements Serializable {
     
 
     public Viite() {
+        this.authors = new ArrayList();
     }
     
     public void updateFromValidationObj(ArticleValidationObject validationObject) {
         this.viiteType = ViiteType.ARTICLE;
         this.refId = validationObject.getRefId();
-        this.author = validationObject.getAuthor();
+        this.authors.add(validationObject.getAuthor());
         this.title = validationObject.getTitle();
         this.journal = validationObject.getJournal();
         this.volume = validationObject.getVolume();
@@ -58,7 +61,7 @@ public class Viite implements Serializable {
     public void updateFromValidationObj(BookValidationObject validationObject) {
         this.viiteType = ViiteType.BOOK;
         this.refId = validationObject.getRefId();
-        this.author = validationObject.getAuthor();
+        this.authors.add(validationObject.getAuthor());
         this.title = validationObject.getTitle();
         this.publisher = validationObject.getPublisher();
         this.address = validationObject.getAddress();
@@ -72,7 +75,7 @@ public class Viite implements Serializable {
     public void updateFromValidationObj(InproceedingsValidationObject validationObject) {
         this.viiteType = ViiteType.INPROCEEDINGS;
         this.refId = validationObject.getRefId();
-        this.author = validationObject.getAuthor();
+        this.authors.add(validationObject.getAuthor());
         this.title = validationObject.getTitle();
         this.booktitle = validationObject.getBooktitle();
         this.publicationYear = validationObject.getPublicationYear();
@@ -83,12 +86,12 @@ public class Viite implements Serializable {
         this.address = validationObject.getAddress();
     }
 
-    public String getAuthor() {
-        return author;
+    public List<String> getAuthors() {
+        return authors;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setAuthors(List<String> author) {
+        this.authors = author;
     }
 
     public Long getId() {

@@ -4,6 +4,7 @@
  */
 package ohtu.miniprojekti.bibtex;
 
+import java.util.ArrayList;
 import ohtu.miniprojekti.domain.Viite;
 import org.hamcrest.Matchers;
 import org.junit.After;
@@ -35,14 +36,18 @@ public class generateBibtexTest {
     @Test
     public void testGenerateBibtex() {
         
-        Viite testiViite = new Viite();
+        Viite testiViite = new Viite();        
+        ArrayList<String> testiLista = new ArrayList();
+        testiLista.add("Moriarty, James");
+        ArrayList<String> testiLista2 = new ArrayList();
+        testiLista2.add("Möriärty, JamesÄÖ");
         generateBibtex tex = new generateBibtex();
         
        
        
         testiViite.setViiteType(Viite.ViiteType.BOOK);
         testiViite.setRefId("MORI50");
-        testiViite.setAuthor("Moriarty, James");
+        testiViite.setAuthors(testiLista);
         testiViite.setTitle("A Treatise on the Binomial Theorem");
         testiViite.setPublicationYear("1850");
         testiViite.setPublisher("Miscatonic University Press");
@@ -57,7 +62,7 @@ public class generateBibtexTest {
         Viite testiViite2 = new Viite();
         testiViite2.setViiteType(Viite.ViiteType.ARTICLE);
         testiViite2.setRefId("MORI30");
-        testiViite2.setAuthor("Moriarty, James");
+        testiViite2.setAuthors(testiLista);
         testiViite2.setTitle("Essays on chess openings");
         testiViite2.setPublicationYear("1830");
         testiViite2.setJournal("Miscatonic University Chess Club");
@@ -68,7 +73,7 @@ public class generateBibtexTest {
         Viite testiViite3 = new Viite();
         testiViite3.setViiteType(Viite.ViiteType.INPROCEEDINGS);
         testiViite3.setRefId("MORI57");
-        testiViite3.setAuthor("Möriärty, JamesÄÖ");
+        testiViite3.setAuthors(testiLista2);
         testiViite3.setTitle("Of Quantum flux in temporal displacement phenomenom");
         testiViite3.setBooktitle("Assorted writings of Arkham supervillains");
         testiViite3.setPublicationYear("1857");
