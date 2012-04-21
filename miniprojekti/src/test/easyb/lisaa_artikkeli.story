@@ -14,7 +14,7 @@ scenario "Käyttäjä tallettaa viitteen, jossa on kaikki pakolliset viitteet", 
     when "Kaikki viitteen pakolliset tiedot annetaan", {
         elem = driver.findElement(By.name("title"))
         elem.sendKeys("Go To Statement Considered Harmful")
-        elem = driver.findElement(By.name("author"))
+        elem = driver.findElement(By.name("author0"))
         elem.sendKeys("Dijkstra, Edsger")
         elem = driver.findElement(By.name("publicationYear"))
         elem.sendKeys("1968")
@@ -39,7 +39,7 @@ scenario "Käyttäjä tallettaa viitteen, josta puuttuu yksi pakollinen tieto", 
     when "Jokin pakollinen kenttä on tyhjä", {
         elem = driver.findElement(By.name("title"))
         elem.sendKeys("Go To Statement Considered Harmful")
-        elem = driver.findElement(By.name("author"))
+        elem = driver.findElement(By.name("author0"))
         elem.sendKeys("Edsger W. Dijkstra")
         elem = driver.findElement(By.name("publicationYear"))
         elem.sendKeys("1968");

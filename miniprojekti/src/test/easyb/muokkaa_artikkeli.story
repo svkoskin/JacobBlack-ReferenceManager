@@ -11,7 +11,7 @@ scenario "Käyttäjä muokkaa viitettä", {
         elem.click()
         elem = driver.findElement(By.name("title"))
         elem.sendKeys("Go To Statement Considered Harmful")
-        elem = driver.findElement(By.name("author"))
+        elem = driver.findElement(By.name("author0"))
         elem.sendKeys("Dijkstra, Edsger")
         elem = driver.findElement(By.name("publicationYear"))
         elem.sendKeys("968")
@@ -26,7 +26,7 @@ scenario "Käyttäjä muokkaa viitettä", {
         count = driver.findElements(By.linkText("edit")).size()
         driver.findElement(By.linkText("edit")).click()
         
-        elem = driver.findElement(By.name("author"))
+        elem = driver.findElement(By.name("author0"))
         elem.sendKeys("muutos")
         elem.submit()
         //System.out.println(driver.getPageSource())
