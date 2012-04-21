@@ -20,6 +20,8 @@
         <h2>Saved references:</h2>
         <ul>
             <li><a href="listaus" id="listing">List all</a></li>
+            <li><a href="bibtex" id="bibtex_list">Bibtex</a></li>
+
         </ul>
         
         <br/>

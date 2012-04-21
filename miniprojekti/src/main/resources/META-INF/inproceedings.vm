@@ -3,6 +3,9 @@ AUTHOR    = {$author},
 TITLE     = {$title},
 BOOKTITLE = {$booktitle},
 YEAR      = {$year},
+#if ($pages)
+Pages    = {$pages},
+#end
 #if ($editor)
 Editor    = {$editor},
 #end
@@ -28,3 +31,4 @@ Note      = {$note},
 Key       = {$key}
 #end
 }
+
