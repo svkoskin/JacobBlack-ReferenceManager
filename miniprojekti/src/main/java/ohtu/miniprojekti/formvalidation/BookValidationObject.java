@@ -4,12 +4,49 @@ import javax.validation.constraints.*;
 import ohtu.miniprojekti.domain.Viite;
 import ohtu.miniprojekti.domain.Viite.ViiteType;
 
-public class BookValidationObject implements ViiteValidationObject{
+public class BookValidationObject implements  ViiteValidationObjectWithManyAuthors {
     
     @NotNull(message="Entry must have at least one author.")
     @Size(min=1, max=200, message="The length must be at most 200 characters.")
     @Pattern(regexp="[\\w äöåÄÖÅ\\,\\'\\-\\.]+", message="Invalid name. Please use format \"last_name1, first_name1 and last_name2, first_name2\".")
-    private String author;
+    private String author0;
+    
+    @Size(min=1, max=200, message="The length must be at most 200 characters.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\'\\-\\.]+", message="Invalid name. Please use format \"last_name1, first_name1 and last_name2, first_name2\".")
+    private String author1;
+    
+    @Size(min=1, max=200, message="The length must be at most 200 characters.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\'\\-\\.]+", message="Invalid name. Please use format \"last_name1, first_name1 and last_name2, first_name2\".")
+    private String author2;
+    
+    @Size(min=1, max=200, message="The length must be at most 200 characters.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\'\\-\\.]+", message="Invalid name. Please use format \"last_name1, first_name1 and last_name2, first_name2\".")
+    private String author3;
+    
+    @Size(min=1, max=200, message="The length must be at most 200 characters.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\'\\-\\.]+", message="Invalid name. Please use format \"last_name1, first_name1 and last_name2, first_name2\".")
+    private String author4;
+    
+    @Size(min=1, max=200, message="The length must be at most 200 characters.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\'\\-\\.]+", message="Invalid name. Please use format \"last_name1, first_name1 and last_name2, first_name2\".")
+    private String author5;
+    
+    @Size(min=1, max=200, message="The length must be at most 200 characters.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\'\\-\\.]+", message="Invalid name. Please use format \"last_name1, first_name1 and last_name2, first_name2\".")
+    private String author6;
+    
+    @NotNull(message="Entry must have at least one author.")
+    @Size(min=1, max=200, message="The length must be at most 200 characters.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\'\\-\\.]+", message="Invalid name. Please use format \"last_name1, first_name1 and last_name2, first_name2\".")
+    private String author7;
+    
+    @Size(min=1, max=200, message="The length must be at most 200 characters.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\'\\-\\.]+", message="Invalid name. Please use format \"last_name1, first_name1 and last_name2, first_name2\".")
+    private String author8;    
+    
+    @Size(min=1, max=200, message="The length must be at most 200 characters.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\'\\-\\.]+", message="Invalid name. Please use format \"last_name1, first_name1 and last_name2, first_name2\".")
+    private String author9;
     
     @NotNull(message="Entry must have a title.")
     @Size(min=1, max=200, message="The length must be at most 200 characters.")

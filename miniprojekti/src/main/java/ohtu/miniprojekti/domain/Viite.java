@@ -17,9 +17,11 @@ public class Viite implements Serializable {
 
         ARTICLE, BOOK, INPROCEEDINGS
     }
+    
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
+    
     private ViiteType viiteType;
     private String refId;
     
@@ -39,17 +41,28 @@ public class Viite implements Serializable {
     private String organization;
     private String address;
     private String booktitle;
-    
-    
 
     public Viite() {
         this.authors = new ArrayList();
     }
-    
+
+    private void populateAuthorsList(ArticleValidationObject validationObject) {
+        this.authors.add(0, validationObject.getAuthor0());
+        this.authors.add(1, validationObject.getAuthor1());
+        this.authors.add(2, validationObject.getAuthor2());
+        this.authors.add(3, validationObject.getAuthor3());
+        this.authors.add(4, validationObject.getAuthor4());
+        this.authors.add(5, validationObject.getAuthor5());
+        this.authors.add(6, validationObject.getAuthor6());
+        this.authors.add(7, validationObject.getAuthor7());
+        this.authors.add(8, validationObject.getAuthor8());        
+        this.authors.add(9, validationObject.getAuthor9());
+    }
+
     public void updateFromValidationObj(ArticleValidationObject validationObject) {
         this.viiteType = ViiteType.ARTICLE;
         this.refId = validationObject.getRefId();
-        this.authors.add(validationObject.getAuthor());
+        populateAuthorsList(validationObject);
         this.title = validationObject.getTitle();
         this.journal = validationObject.getJournal();
         this.volume = validationObject.getVolume();
@@ -221,11 +234,11 @@ public class Viite implements Serializable {
     public void setBooktitle(String booktitle) {
         this.booktitle = booktitle;
     }
-    
-    public void setBibtex(){
+
+    public void setBibtex() {
     }
-    
-    public String getBibtex(){
+
+    public String getBibtex() {
         generateBibtex tex = new generateBibtex();
         return tex.generateBibtex(this);
     }
