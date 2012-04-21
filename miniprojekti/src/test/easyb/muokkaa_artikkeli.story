@@ -6,7 +6,7 @@ description "Käyttäjä voi muokata artikkeli-viitettä"
 scenario "Käyttäjä muokkaa viitettä", {
     given "Talletettuna on yksi artikkeli", {
         driver = new HtmlUnitDriver()
-        driver.get("http://localhost:7777/miniprojekti")
+        driver.get("http://localhost:8080/miniprojekti")
         elem = driver.findElement(By.id("add_article"))
         elem.click()
         elem = driver.findElement(By.name("title"))
@@ -21,7 +21,7 @@ scenario "Käyttäjä muokkaa viitettä", {
         
     }
     when "Käyttäjä muokkaa viitettä", {
-        driver.get("http://localhost:7777/miniprojekti")
+        driver.get("http://localhost:8080/miniprojekti")
         driver.findElement(By.id("listing")).click()
         count = driver.findElements(By.linkText("edit")).size()
         driver.findElement(By.linkText("edit")).click()
