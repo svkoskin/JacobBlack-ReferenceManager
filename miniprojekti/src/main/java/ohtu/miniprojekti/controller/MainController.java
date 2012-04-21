@@ -1,5 +1,6 @@
 package ohtu.miniprojekti.controller;
 
+import java.util.List;
 import javax.validation.Valid;
 import ohtu.miniprojekti.domain.Viite;
 import ohtu.miniprojekti.domain.Viite.ViiteType;
@@ -69,9 +70,9 @@ public class MainController {
         viite.updateFromValidationObj(viiteValidationObj);
 
         if (viite.getRefId() == null || !viiteService.refIdValid(viite.getRefId())) {
-            String author = viite.getAuthors().get(0);
+            List<String> authors = viite.getAuthors();
             String year = viite.getPublicationYear();
-            viite.setRefId(viiteService.generateRefId(author, year));
+            viite.setRefId(viiteService.generateRefId(authors, year));
         }
 
         viite = viiteService.save(viite);
@@ -95,9 +96,9 @@ public class MainController {
         viite.updateFromValidationObj(viiteValidationObj);
 
         if (viite.getRefId() == null || !viiteService.refIdValid(viite.getRefId())) {
-            String author = viite.getAuthors().get(0);
+            List<String> authors = viite.getAuthors();
             String year = viite.getPublicationYear();
-            viite.setRefId(viiteService.generateRefId(author, year));
+            viite.setRefId(viiteService.generateRefId(authors, year));
         }
 
         viite = viiteService.save(viite);
@@ -121,9 +122,9 @@ public class MainController {
         viite.updateFromValidationObj(viiteValidationObj);
 
         if (viite.getRefId() == null || !viiteService.refIdValid(viite.getRefId())) {
-            String author = viite.getAuthors().get(0);
+            List<String> authors = viite.getAuthors();
             String year = viite.getPublicationYear();
-            viite.setRefId(viiteService.generateRefId(author, year));
+            viite.setRefId(viiteService.generateRefId(authors, year));
         }
 
         viite = viiteService.save(viite);

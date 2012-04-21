@@ -18,5 +18,5 @@ public interface ViiteService {
 
     boolean refIdValid(String refId);
 
-    String generateRefId(String author, String year);
+    String generateRefId(List<String> authors, String year);
 }

@@ -74,29 +74,41 @@ public class ViiteServiceImpl implements ViiteService {
         }
     }
 
-    private String generateAuthorPart(String author) {
-        // try to find something similar to a last name in author string
-        String[] authorTokens = author.split("[\\s\\W]");
-        String authorPart = "";
+    private String generateAuthorPart(List<String> authors) {
 
-        for (String s : authorTokens) {
-            if (s.matches("^[A-ZÅÖÄ]\\w+$")) {
-                if(s.length() < 4) {
-                    return s.substring(0, s.length());
-                } else {
-                    return s.substring(0, 4);
-                }
+        int numberOfAuthors = 0;
+        StringBuilder multipleAuthorBuilder = new StringBuilder();
+
+        for (String author : authors) {
+            if (!author.isEmpty()) {
+                numberOfAuthors++;
+                multipleAuthorBuilder.append(author.charAt(0));
             }
         }
 
-        // no matches
-        return author.substring(0, 1);
+        if (numberOfAuthors > 1) {
+            return multipleAuthorBuilder.toString();
+        } else {
+            // only one author found, refine his surname to an author part
+            String[] nameTokens = authors.get(0).split("[\\s\\W]");
+            for (String token : nameTokens) {
+                if (token.matches("[A-ZÅÖÄ][a-zåöä]*")) {
+                    if (token.length() < 4) {
+                        return token.substring(0, token.length());
+                    } else {
+                        return token.substring(0, 4);
+                    }
+                }
+            }
+            // if everything else fails
+            return "";
+        }
     }
 
     @Override
-    public String generateRefId(String author, String year) {
+    public String generateRefId(List<String> authors, String year) {
         String yearPart;
-        
+
         if (year.length() == 2) {
             yearPart = year;
         } else if (year.length() > 2) {
@@ -104,14 +116,14 @@ public class ViiteServiceImpl implements ViiteService {
         } else {
             yearPart = "";
         }
-        
-        String refIdCandidate = this.generateAuthorPart(author) + yearPart;
 
-        if(refIdUnique(refIdCandidate)) {
+        String refIdCandidate = this.generateAuthorPart(authors) + yearPart;
+
+        if (refIdUnique(refIdCandidate)) {
             return refIdCandidate;
         } else {
             char c = 'a';
-            while(!refIdUnique(refIdCandidate + c)) {
+            while (!refIdUnique(refIdCandidate + c)) {
                 c++;
             }
             return refIdCandidate + c;
