@@ -55,6 +55,16 @@ public class ViiteServiceImpl implements ViiteService {
 
     }
 
+    private String findSurname(String author) {
+        String[] nameTokens = author.split("[\\s\\W]");
+        for (String token : nameTokens) {
+            if (token.matches("[A-ZÅÖÄ][a-zåöä]*")) {
+                return token;
+            }
+        }
+        return "";
+    }
+
     private boolean refIdUnique(String refId) {
         List<Viite> all = this.findAll();
         for (Viite v : all) {
@@ -82,31 +92,28 @@ public class ViiteServiceImpl implements ViiteService {
         for (String author : authors) {
             if (!author.isEmpty()) {
                 numberOfAuthors++;
-                multipleAuthorBuilder.append(author.charAt(0));
+                String surname = findSurname(author);
+                if (surname.length() > 0) {
+                    multipleAuthorBuilder.append(surname.charAt(0));
+                }
             }
         }
 
         if (numberOfAuthors > 1) {
             return multipleAuthorBuilder.toString();
         } else {
-            // only one author found, refine his surname to an author part
-            String[] nameTokens = authors.get(0).split("[\\s\\W]");
-            for (String token : nameTokens) {
-                if (token.matches("[A-ZÅÖÄ][a-zåöä]*")) {
-                    if (token.length() < 4) {
-                        return token.substring(0, token.length());
-                    } else {
-                        return token.substring(0, 4);
-                    }
-                }
+            String surname = findSurname(authors.get(0));
+            
+            if (surname.length() < 4) {
+                return surname.substring(0, surname.length());
+            } else {
+                return surname.substring(0, 4);
             }
-            // if everything else fails
-            return "";
         }
     }
 
     @Override
-    public String generateRefId(List<String> authors, String year) {
+        public String generateRefId(List<String> authors, String year) {
         String yearPart;
 
         if (year.length() == 2) {
