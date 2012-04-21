@@ -17,11 +17,7 @@
         <c:forEach var="viite" items="${viitteet}">
             <label>Reference ${viite.id}</label> <a href="edit/${viite.id}">edit</a><br/>
             <c:if test="${ not empty viite.refId}"><label>Identifier:</label> ${viite.refId} <br/></c:if>
-            <c:if test="${ not empty viite.authors}"><label>Authors:</label>
-                <c:forEach var="author" items="${viite.authors}">
-                    ${author}                    
-                </c:forEach>
-            </c:if>
+            <c:if test="${ not empty viite.authors}"><label>Authors:</label> ${viite.authorsString} <br/></c:if>
             <c:if test="${ not empty viite.title}"><label>Title:</label> ${viite.title} <br/></c:if>
             <c:if test="${ not empty viite.booktitle}"><label>Booktitle:</label> ${viite.booktitle} <br/></c:if>
             <c:if test="${ not empty viite.publicationYear}"><label>Year:</label> ${viite.publicationYear} <br/></c:if>
@@ -35,10 +31,10 @@
             <c:if test="${ not empty viite.editor}"><label>Editor:</label> ${viite.editor} <br/></c:if>
             <c:if test="${ not empty viite.organization}"><label>Organization:</label> ${viite.organization} <br/></c:if>
             <c:if test="${ not empty viite.address}"><label>Address:</label> ${viite.address} <br/></c:if>
-            <br/>
+                <br/>
         </c:forEach>
-        
-        <span><a href="home">Return to main page</a></span>
+
+        <span><a href="home">Return to main page</a></span>        
 
 
     </body>

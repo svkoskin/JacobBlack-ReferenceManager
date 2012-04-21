@@ -1,52 +1,52 @@
 package ohtu.miniprojekti.formvalidation;
 
+import java.util.List;
 import javax.validation.constraints.*;
 import ohtu.miniprojekti.domain.Viite;
 import ohtu.miniprojekti.domain.Viite.ViiteType;
 
-public class InproceedingsValidationObject implements ViiteValidationObjectWithManyAuthors {
+public class InproceedingsValidationObject implements ViiteValidationObject {
    
     @NotNull(message="Entry must have at least one author.")
     @Size(min=1, max=200, message="The length must be at most 200 characters.")
     @Pattern(regexp="[\\w äöåÄÖÅ\\,\\'\\-\\.]+", message="Invalid name. Please use format \"last_name1, first_name1 and last_name2, first_name2\".")
     private String author0;
     
-    @Size(min=1, max=200, message="The length must be at most 200 characters.")
-    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\'\\-\\.]+", message="Invalid name. Please use format \"last_name1, first_name1 and last_name2, first_name2\".")
+    @Size(min=0, max=200, message="The length must be at most 200 characters.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\'\\-\\.]*", message="Invalid name. Please use format \"last_name1, first_name1 and last_name2, first_name2\".")
     private String author1;
     
-    @Size(min=1, max=200, message="The length must be at most 200 characters.")
-    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\'\\-\\.]+", message="Invalid name. Please use format \"last_name1, first_name1 and last_name2, first_name2\".")
+    @Size(min=0, max=200, message="The length must be at most 200 characters.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\'\\-\\.]*", message="Invalid name. Please use format \"last_name1, first_name1 and last_name2, first_name2\".")
     private String author2;
     
-    @Size(min=1, max=200, message="The length must be at most 200 characters.")
-    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\'\\-\\.]+", message="Invalid name. Please use format \"last_name1, first_name1 and last_name2, first_name2\".")
+    @Size(min=0, max=200, message="The length must be at most 200 characters.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\'\\-\\.]*", message="Invalid name. Please use format \"last_name1, first_name1 and last_name2, first_name2\".")
     private String author3;
     
-    @Size(min=1, max=200, message="The length must be at most 200 characters.")
-    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\'\\-\\.]+", message="Invalid name. Please use format \"last_name1, first_name1 and last_name2, first_name2\".")
+    @Size(min=0, max=200, message="The length must be at most 200 characters.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\'\\-\\.]*", message="Invalid name. Please use format \"last_name1, first_name1 and last_name2, first_name2\".")
     private String author4;
     
-    @Size(min=1, max=200, message="The length must be at most 200 characters.")
-    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\'\\-\\.]+", message="Invalid name. Please use format \"last_name1, first_name1 and last_name2, first_name2\".")
+    @Size(min=0, max=200, message="The length must be at most 200 characters.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\'\\-\\.]*", message="Invalid name. Please use format \"last_name1, first_name1 and last_name2, first_name2\".")
     private String author5;
     
-    @Size(min=1, max=200, message="The length must be at most 200 characters.")
-    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\'\\-\\.]+", message="Invalid name. Please use format \"last_name1, first_name1 and last_name2, first_name2\".")
+    @Size(min=0, max=200, message="The length must be at most 200 characters.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\'\\-\\.]*", message="Invalid name. Please use format \"last_name1, first_name1 and last_name2, first_name2\".")
     private String author6;
     
-    @NotNull(message="Entry must have at least one author.")
-    @Size(min=1, max=200, message="The length must be at most 200 characters.")
-    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\'\\-\\.]+", message="Invalid name. Please use format \"last_name1, first_name1 and last_name2, first_name2\".")
+    @Size(min=0, max=200, message="The length must be at most 200 characters.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\'\\-\\.]*", message="Invalid name. Please use format \"last_name1, first_name1 and last_name2, first_name2\".")
     private String author7;
     
-    @Size(min=1, max=200, message="The length must be at most 200 characters.")
-    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\'\\-\\.]+", message="Invalid name. Please use format \"last_name1, first_name1 and last_name2, first_name2\".")
+    @Size(min=0, max=200, message="The length must be at most 200 characters.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\'\\-\\.]*", message="Invalid name. Please use format \"last_name1, first_name1 and last_name2, first_name2\".")
     private String author8;    
     
-    @Size(min=1, max=200, message="The length must be at most 200 characters.")
-    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\'\\-\\.]+", message="Invalid name. Please use format \"last_name1, first_name1 and last_name2, first_name2\".")
-    private String author9;
+    @Size(min=0, max=200, message="The length must be at most 200 characters.")
+    @Pattern(regexp="[\\w äöåÄÖÅ\\,\\'\\-\\.]*", message="Invalid name. Please use format \"last_name1, first_name1 and last_name2, first_name2\".")
+    private String author9;    
     
     @NotNull(message="Entry must have a title.")
     @Size(min=1, max=200, message="The length must be at most 200 characters.")
@@ -84,7 +84,8 @@ public class InproceedingsValidationObject implements ViiteValidationObjectWithM
     private Long id;
     private ViiteType viiteType;
     
-    @Pattern(regexp="([\\wåöäÅÖÄ]+\\d+\\w*)?", message="Invalid identifier.")
+    @Pattern(regexp="([\\wåöäÅÖÄ]+\\d+\\w*)?", message="Invalid identifier.")    
+
     private String refId;
 
     public InproceedingsValidationObject() {
@@ -96,7 +97,19 @@ public class InproceedingsValidationObject implements ViiteValidationObjectWithM
         viiteType = ViiteType.INPROCEEDINGS;
         this.id = viite.getId();
         this.refId = viite.getRefId();
-        this.        
+        
+        List<String> authors = viite.getAuthors();        
+        if(authors.size() > 0) { this.author0 = authors.get(0); };
+        if(authors.size() > 1) { this.author1 = authors.get(1); };
+        if(authors.size() > 2) { this.author2 = authors.get(2); };
+        if(authors.size() > 3) { this.author3 = authors.get(3); };
+        if(authors.size() > 4) { this.author4 = authors.get(4); };
+        if(authors.size() > 5) { this.author5 = authors.get(5); };
+        if(authors.size() > 6) { this.author6 = authors.get(6); };
+        if(authors.size() > 7) { this.author7 = authors.get(7); };
+        if(authors.size() > 8) { this.author8 = authors.get(8); };
+        if(authors.size() > 9) { this.author9 = authors.get(9); };
+        
         this.title = viite.getTitle();
         this.booktitle = viite.getBooktitle();
         this.publicationYear = viite.getPublicationYear();

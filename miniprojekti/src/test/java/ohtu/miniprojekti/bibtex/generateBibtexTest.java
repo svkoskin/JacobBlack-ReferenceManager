@@ -5,6 +5,7 @@
 package ohtu.miniprojekti.bibtex;
 
 import java.util.ArrayList;
+import java.util.List;
 import ohtu.miniprojekti.domain.Viite;
 import org.hamcrest.Matchers;
 import org.junit.After;
@@ -36,14 +37,16 @@ public class generateBibtexTest {
     @Test
     public void testGenerateBibtex() {
         
-        Viite testiViite = new Viite();        
-        ArrayList<String> testiLista = new ArrayList();
-        testiLista.add("Moriarty, James");
-        ArrayList<String> testiLista2 = new ArrayList();
-        testiLista2.add("Möriärty, JamesÄÖ");
+        Viite testiViite = new Viite();
         generateBibtex tex = new generateBibtex();
         
-       
+        List<String> testiLista = new ArrayList();
+        testiLista.add("Moriarty, James");
+        
+        List<String> testiLista2 = new ArrayList();
+        testiLista2.add("Möriärty, JamesÄÖ");
+        
+        
        
         testiViite.setViiteType(Viite.ViiteType.BOOK);
         testiViite.setRefId("MORI50");

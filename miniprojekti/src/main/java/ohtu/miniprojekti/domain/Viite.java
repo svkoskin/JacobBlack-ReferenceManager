@@ -42,11 +42,11 @@ public class Viite implements Serializable {
     private String address;
     private String booktitle;
 
-    public Viite() {
-        this.authors = new ArrayList();
+    public Viite() {        
     }
 
-    private void populateAuthorsList(ArticleValidationObject validationObject) {
+    private void populateAuthorList(ViiteValidationObject validationObject) {
+        this.authors = new ArrayList(10);
         this.authors.add(0, validationObject.getAuthor0());
         this.authors.add(1, validationObject.getAuthor1());
         this.authors.add(2, validationObject.getAuthor2());
@@ -55,14 +55,14 @@ public class Viite implements Serializable {
         this.authors.add(5, validationObject.getAuthor5());
         this.authors.add(6, validationObject.getAuthor6());
         this.authors.add(7, validationObject.getAuthor7());
-        this.authors.add(8, validationObject.getAuthor8());        
+        this.authors.add(8, validationObject.getAuthor8());
         this.authors.add(9, validationObject.getAuthor9());
     }
 
     public void updateFromValidationObj(ArticleValidationObject validationObject) {
         this.viiteType = ViiteType.ARTICLE;
         this.refId = validationObject.getRefId();
-        populateAuthorsList(validationObject);
+        populateAuthorList(validationObject);
         this.title = validationObject.getTitle();
         this.journal = validationObject.getJournal();
         this.volume = validationObject.getVolume();
@@ -74,7 +74,7 @@ public class Viite implements Serializable {
     public void updateFromValidationObj(BookValidationObject validationObject) {
         this.viiteType = ViiteType.BOOK;
         this.refId = validationObject.getRefId();
-        this.authors.add(validationObject.getAuthor());
+        populateAuthorList(validationObject);
         this.title = validationObject.getTitle();
         this.publisher = validationObject.getPublisher();
         this.address = validationObject.getAddress();
@@ -88,7 +88,7 @@ public class Viite implements Serializable {
     public void updateFromValidationObj(InproceedingsValidationObject validationObject) {
         this.viiteType = ViiteType.INPROCEEDINGS;
         this.refId = validationObject.getRefId();
-        this.authors.add(validationObject.getAuthor());
+        populateAuthorList(validationObject);
         this.title = validationObject.getTitle();
         this.booktitle = validationObject.getBooktitle();
         this.publicationYear = validationObject.getPublicationYear();
@@ -103,8 +103,24 @@ public class Viite implements Serializable {
         return authors;
     }
 
-    public void setAuthors(List<String> author) {
-        this.authors = author;
+    public void setAuthors(List<String> authors) {
+        this.authors = authors;
+    }
+
+    public String getAuthorsString() {
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < this.authors.size(); i++) {
+            String author = this.authors.get(i);
+            if (!author.isEmpty()) {
+                if(i != 0) {
+                    sb.append(" and ");
+                }
+                sb.append(author);
+            }            
+        }      
+        
+        return sb.toString();
     }
 
     public Long getId() {
