@@ -29,6 +29,11 @@ public class ViiteServiceImpl implements ViiteService {
     public List<Viite> findAll() {
         return viiteRepository.findAll();
     }
+    
+    @Override
+    public List<Viite> findAllWithAuthor(String author) {
+        return viiteRepository.findAllWithAuthor(author);
+    }
 
     @Override
     public Viite findById(Long id) {
@@ -136,4 +141,6 @@ public class ViiteServiceImpl implements ViiteService {
             return refIdCandidate + c;
         }
     }
+
+    
 }

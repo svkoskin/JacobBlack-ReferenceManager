@@ -10,6 +10,8 @@ public interface ViiteService {
 
     List<Viite> findAll();
 
+    List<Viite> findAllWithAuthor(String author);
+    
     Viite findById(Long id);
 
     Viite getViite(ViiteValidationObject viiteValidationObject);

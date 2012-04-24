@@ -6,7 +6,7 @@ description "Käyttäjä voi tallettaa viitteen artikkeliin"
 scenario "Käyttäjä tallettaa viitteen, jossa on kaikki pakolliset viitteet", {
     given "Viitteenlisäyslomake on avattu", {
         driver = new HtmlUnitDriver()
-        driver.get("http://localhost:7777/miniprojekti")
+        driver.get("http://localhost:7777/miniprojekti")        
         elem = driver.findElement(By.id("add_article"))
         elem.click()
         
@@ -24,7 +24,7 @@ scenario "Käyttäjä tallettaa viitteen, jossa on kaikki pakolliset viitteet", 
 
     }
     then "Järjestelmä tallettaa viitteen onnistuneesti",{
-	driver.get("http://localhost:7777/listaus");	
+	driver.get("http://localhost:7777/listing/all");	
 	driver.getPageSource().contains("Go To Statement Considered Harmful").shouldBe true        
     }
 }

@@ -132,11 +132,19 @@ public class MainController {
         return "redirect:home";
     }
 
-    @RequestMapping(value = "listaus", method = RequestMethod.GET)
+    @RequestMapping(value = "listing/all", method = RequestMethod.GET)
     public String getListaaKaikki(Model model) {
         model.addAttribute("viitteet", viiteService.findAll());
         return "listaus";
     }
+
+    @RequestMapping(value = "listing/{author}", method = RequestMethod.GET)
+    public String getListaaAuthor(Model model, @PathVariable String author) {
+        model.addAttribute("viitteet", viiteService.findAllWithAuthor(author));
+        return "listaus";
+    }
+
+    
     
     @RequestMapping(value = "bibtex", method = RequestMethod.GET)
     public String getBibtex(Model model) {
