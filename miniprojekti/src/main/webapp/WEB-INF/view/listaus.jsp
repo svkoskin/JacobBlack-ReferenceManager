@@ -35,7 +35,7 @@
             <c:if test="${ not empty viite.address}"><label>Address:</label> ${viite.address} <br/></c:if>
                 <br/>
         </c:forEach>
-        <a href="/bibtex/${author}">To bibtex</a><br>
+        <a href="../bibtex/${selectedAuthor}">To bibtex</a><br>
         <span><a href="../home">Return to main page</a></span>        
 
 

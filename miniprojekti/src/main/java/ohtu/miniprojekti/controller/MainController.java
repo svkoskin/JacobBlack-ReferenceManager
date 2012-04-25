@@ -135,18 +135,20 @@ public class MainController {
     @RequestMapping(value = "listing/all", method = RequestMethod.GET)
     public String getListaaKaikki(Model model) {
         model.addAttribute("viitteet", viiteService.findAll());
+        model.addAttribute("selectedAuthor", "all");
         return "listaus";
     }
 
     @RequestMapping(value = "listing/{author}", method = RequestMethod.GET)
     public String getListaaAuthor(Model model, @PathVariable String author) {
         model.addAttribute("viitteet", viiteService.findAllWithAuthor(author));
+        model.addAttribute("selectedAuthor", author);
         return "listaus";
     }
 
     
     
-    @RequestMapping(value = "bibtex", method = RequestMethod.GET)
+    @RequestMapping(value = "bibtex/all", method = RequestMethod.GET)
     public String getBibtex(Model model) {
         model.addAttribute("viitteet", viiteService.findAll());
         return "bibtex";
