@@ -6,40 +6,35 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Miniprojekti</title>
-        <style>
-            label { clear:both; display:block; float:left; position:relative; width: 200px; }
-            input { float:left; position:relative; }
-            span {clear:both; display:block; float:left; position:relative; }
-        </style>
-
+        <link rel="stylesheet" type="text/css" href="<c:url value="/res/jacob.css" />" />
     </head>
     <body>
         <h1>New/Edit entry (Inproceedings):</h1>
         <c:url value="/inproceedings" var="action"/>
-        <form:form commandName="viite" action="${action}" method="POST">
-            <span id="author0"><label>*Author: </label><form:input path="author0" /> <form:errors path="author0" /></span>
-            <span id="author1"><label>Author: </label><form:input path="author1" /> <form:errors path="author1" /></span>
-            <span id="author2"><label>Author: </label><form:input path="author2" /> <form:errors path="author2" /></span>
-            <span id="author3"><label>Author: </label><form:input path="author3" /> <form:errors path="author3" /></span>
-            <span id="author4"><label>Author: </label><form:input path="author4" /> <form:errors path="author4" /></span>
-            <span id="author5"><label>Author: </label><form:input path="author5" /> <form:errors path="author5" /></span>
-            <span id="author6"><label>Author: </label><form:input path="author6" /> <form:errors path="author6" /></span>
-            <span id="author7"><label>Author: </label><form:input path="author7" /> <form:errors path="author7" /></span>
-            <span id="author8"><label>Author: </label><form:input path="author8" /> <form:errors path="author8" /></span>
-            <span id="author9"><label>Author: </label><form:input path="author9" /> <form:errors path="author9" /></span>
+        <form:form commandName="viite" action="${action}" method="POST" class="form">
+            <p><form:input path="author0" /><label for="author0">*Author</label><form:errors path="author0" cssClass="error" /></p>
+            <p><form:input path="author1" /><label for="author1">Author</label><form:errors path="author1" cssClass="error" /></p>
+            <p><form:input path="author2" /><label for="author2">Author</label><form:errors path="author2" cssClass="error" /></p>
+            <p><form:input path="author3" /><label for="author3">Author</label><form:errors path="author3" cssClass="error" /></p>
+            <p><form:input path="author4" /><label for="author4">Author</label><form:errors path="author4" cssClass="error" /></p>
+            <p><form:input path="author5" /><label for="author5">Author</label><form:errors path="author5" cssClass="error" /></p>
+            <p><form:input path="author6" /><label for="author6">Author</label><form:errors path="author6" cssClass="error" /></p>
+            <p><form:input path="author7" /><label for="author7">Author</label><form:errors path="author7" cssClass="error" /></p>
+            <p><form:input path="author8" /><label for="author8">Author</label><form:errors path="author8" cssClass="error" /></p>
+            <p><form:input path="author9" /><label for="author9">Author</label><form:errors path="author9" cssClass="error" /></p>
 
                         
-            <label>*Title: </label><form:input path="title" /> <form:errors path="title" /><br/>
-            <label>*Booktitle: </label><form:input path="booktitle" /> <form:errors path="booktitle" /><br/>
-            <label>*Year: </label><form:input path="publicationYear" /> <form:errors path="publicationYear" /><br/>            
-            <label>Identifier: </label><form:input path="refId" /> <form:errors path="refId" /><br/>
-            <label>Editor: </label><form:input path="editor" /> <form:errors path="editor" /><br/>
-            <label>Pages: </label><form:input path="pages" /> <form:errors path="pages" /><br/>
-            <label>Organization: </label><form:input path="organization" /> <form:errors path="organization" /><br/>
-            <label>Publisher: </label><form:input path="publisher" /> <form:errors path="publisher" /><br/>
-            <label>Address: </label><form:input path="address" /> <form:errors path="address" /><br/>
+            <p><form:input path="title" /><label for="title">*Title</label><form:errors path="title" cssClass="error" /></p>
+            <p><form:input path="booktitle" /><label for="booktitle">*Booktitle</label> <form:errors path="booktitle" cssClass="error" /></p>
+            <p><form:input path="publicationYear" /><label for="publicationYear">*Year</label><form:errors path="publicationYear" cssClass="error" /></p>            
+            <p><form:input path="refId" /><label for="refID">Identifier</label><form:errors path="refId" cssClass="error" /></p>
+            <p><form:input path="editor" /><label for="editor">Editor</label><form:errors path="editor" cssClass="error" /></p>
+            <p><form:input path="pages" /><label for="pages">Pages</label><form:errors path="pages" cssClass="error" /></p>
+            <p><form:input path="organization" /><label for="organization">Organization</label><form:errors path="organization" cssClass="error" /></p>
+            <p><form:input path="publisher" /><label for="publisher">Publisher</label><form:errors path="publisher" cssClass="error" /></p>
+            <p><form:input path="address" /><label for="address">Address</label><form:errors path="address" cssClass="error" /></p>
             <form:hidden path="id"/>
-            <span><input type="submit" value="Send" /></span>
+            <span><input type="submit" id="submit" value="Send" /></span>
         </form:form>   
         <br/>
         <span><h4>(*) required field</h4></span>

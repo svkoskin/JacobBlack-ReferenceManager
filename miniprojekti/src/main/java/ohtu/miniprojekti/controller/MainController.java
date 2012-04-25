@@ -146,7 +146,7 @@ public class MainController {
 
     
     
-    @RequestMapping(value = "bibtex/all", method = RequestMethod.GET)
+    @RequestMapping(value = "bibtex", method = RequestMethod.GET)
     public String getBibtex(Model model) {
         model.addAttribute("viitteet", viiteService.findAll());
         return "bibtex";

@@ -6,9 +6,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Miniprojekti</title>
-        <style>
-            label { clear:both; display:block; float:left; position:relative; width: 200px; }
-        </style>
+        <link rel="stylesheet" type="text/css" href="<c:url value="/res/jacob.css" />" />
     </head>
     <body>
         <h1>References:</h1>

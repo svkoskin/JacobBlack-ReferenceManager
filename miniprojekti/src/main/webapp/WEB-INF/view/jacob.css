@@ -1,0 +1,64 @@
+input {  
+    padding: 5px;  
+    border: solid 1px #E0E0E0;  
+    outline: 0;  
+    font: normal 13px/100% Verdana, Tahoma, sans-serif;  
+    width: 200px;  
+    background: #FFFFFF;  
+
+
+    }
+
+#submit {  
+    width: auto;  
+    padding: 9px 15px;  
+    background: #9c7629;  
+    border: 0;  
+    font-size: 14px;  
+    color: #251900;  
+    }  
+    
+    button.menu{
+    width: auto;  
+    padding: 9px 15px;  
+    background: #9c7629;  
+    border: 0;  
+    font-size: 14px;  
+    color: #251900; 
+    }    
+ 
+
+.form label {  
+    margin-left: 10px;  
+    color: #251900;  
+    }
+
+input:hover, textarea:hover,  
+input:focus, textarea:focus {  
+    border-color: #9c7629; 
+    }
+
+input:focus+label{ 
+	font-weight: bold;
+	 }   
+         
+span.error {
+        margin: 10px;
+	color: #A60000;
+	}         
+
+p {
+    color: #251900;
+    }
+
+h4 {
+    color: #251900;
+    }
+
+h1 {
+    color: #251900;
+    font-family:georgia,garamond,serif;
+    }
+a{
+    color: #9c6629;
+ }
