@@ -146,9 +146,17 @@ public class MainController {
 
     
     
-    @RequestMapping(value = "bibtex", method = RequestMethod.GET)
+    @RequestMapping(value = "bibtex/all", method = RequestMethod.GET)
     public String getBibtex(Model model) {
         model.addAttribute("viitteet", viiteService.findAll());
         return "bibtex";
     }
+    
+    
+    @RequestMapping(value = "bibtex/{author}", method = RequestMethod.GET)
+    public String getBibtexAuthor(Model model,@PathVariable String author) {
+        model.addAttribute("viitteet", viiteService.findAllWithAuthor(author));
+        return "bibtex";
+    }
+    
 }
